@@ -1,6 +1,7 @@
 // This page is generated! Do not edit the .adoc file, but instead run rhdh-supported-plugins.sh to regen this page from the latest plugin metadata.
 // cd /path/to/rhdh-documentation; ./modules/dynamic-plugins/rhdh-supported-plugins.sh; ./build/scripts/build.sh; google-chrome titles-generated/main/plugin-rhdh/index.html
 
+<<<<<<< HEAD
 = {company-name} Technology Preview plugins
 
 {company-name} provides Technology Preview support for the following 54 plugins:
@@ -291,3 +292,6 @@
 
 
 |===
+=======
+// This page is currently empty. To regenerate, uncomment sections of rhdh-supported-plugins.sh that are disabled as part of RHIDP-5103
+>>>>>>> 68c0e944f (chore: dynamic plugins are all now expressed as wrappers (RHIDP-5103) (#754))

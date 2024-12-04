@@ -295,8 +295,10 @@ for key in "${sorted[@]}"; do
 done
 num_plugins+=(${#adoc1[@]})
 
+# RHIDP-5103 - currently no tech-preview plugins, only community. So disable this for now
 rm -f "${0/.sh/.adoc2}"
 sorted=(); while IFS= read -rd '' key; do sorted+=( "$key" ); done < <(printf '%s\0' "${!adoc2[@]}" | sort -z)
+<<<<<<< HEAD
 # shellcheck disable=SC2128
 if [[ $sorted ]] ;then 
     for key in "${sorted[@]}"; do 
@@ -304,6 +306,11 @@ if [[ $sorted ]] ;then
         echo -e "${csv[$key]}" >>  "${0/.sh/.csv}"
     done
 fi
+=======
+for key in "${sorted[@]}"; do 
+    # echo -e "${adoc2[$key]}" >> "${0/.sh/.ref-rh-tech-preview-plugins}"; 
+    echo -e "${csv[$key]}" >>  "${0/.sh/.csv}"; done
+>>>>>>> 68c0e944f (chore: dynamic plugins are all now expressed as wrappers (RHIDP-5103) (#754))
 num_plugins+=(${#adoc2[@]})
 
 rm -f "${0/.sh/.adoc3}"
@@ -320,7 +327,11 @@ num_plugins+=(${#adoc3[@]})
 # merge the content from the three .adocX files into the .template.adoc file, replacing the TABLE_CONTENT markers
 count=1
 index=0
+<<<<<<< HEAD
 for d in ref-rh-supported-plugins ref-rh-tech-preview-plugins ref-community-plugins; do 
+=======
+for d in ref-rh-supported-plugins ref-community-plugins; do # RHIDP-5103 - remove ref-rh-tech-preview-plugins for now as everything has moved to community
+>>>>>>> 68c0e944f (chore: dynamic plugins are all now expressed as wrappers (RHIDP-5103) (#754))
     (( index = count - 1 ))
     this_num_plugins=${num_plugins[$index]}
     echo "[$count] Processing $d ..."
@@ -329,7 +340,11 @@ for d in ref-rh-supported-plugins ref-rh-tech-preview-plugins ref-community-plug
         -e "s/\%\%COUNT_${count}\%\%/$this_num_plugins/" \
         "${0/rhdh-supported-plugins.sh/${d}.template.adoc}" > "${0/rhdh-supported-plugins.sh/${d}.adoc}"
     rm -f "$adocfile"
+<<<<<<< HEAD
     (( count = count + 1 ))
+=======
+    (( count = count + 2 ))
+>>>>>>> 68c0e944f (chore: dynamic plugins are all now expressed as wrappers (RHIDP-5103) (#754))
 done
 
 # inject ENABLED_PLUGINS into con-preinstalled-dynamic-plugins.template.adoc
