@@ -12,6 +12,10 @@ As Red Hat considers making future iterations of Technology Preview features gen
 See: link:https://access.redhat.com/support/offerings/techpreview/[Technology Preview support scope].
 ====
 
+<<<<<<< HEAD
 
 None.
 
+=======
+[
+>>>>>>> 0a1cb6a28 (release-1.4 chore: release notes single-sourcing script fixes and enhancements (#790))
