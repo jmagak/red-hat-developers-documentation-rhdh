@@ -178,8 +178,17 @@ Two plugins previously under the @janus-idp scope have moved to @red-hat-develop
 
 | `@janus-idp/backstage-plugin-bulk-import-backend`
 | `@red-hat-developer-hub/backstage-plugin-bulk-import-backend`
+
+| `@janus-idp/backstage-plugin-bulk-import-backend`
+| `@red-hat-developer-hub/backstage-plugin-bulk-import-backend`
 |===
 
+With this release, the following plugins have been added:
+
+* Signals (frontend) - RH Tech Preview
+* Notifications (backend) - RH Tech Preview
+* Notifications (frontend) - RH Tech Preview
+* Notifications Module Email - RH Tech Preview
 
 [id="feature-rhidp-5156"]
 == The catalog backend module logs plugin is enabled
