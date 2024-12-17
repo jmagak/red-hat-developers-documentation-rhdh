@@ -97,7 +97,7 @@ With this update, the Role-Based Access Control (RBAC) Backend plugin now starts
 [id="bug-fix-rhidp-4734"]
 === Resolved RBAC API inconsistency when scaling deployments to more than one pod
 
-Before this update, scaling the deployment to more than one pod caused Role-Based Access Control (RBAC) roles to remain unsynced, allowing only the pod that created the resource to serve it.
+Before this update, scaling the deployment to more than one pod caused RRole-Based Access Control (RBAC) roles to remain unsynced, allowing only the pod that created the resource to serve it.
 
 With this update, RBAC roles are now properly synced across all pods, with Redis cache and traffic routing configured to ensure consistency across the deployment.
 
@@ -124,6 +124,7 @@ Previously, the CLI failed with a message that native modules are not supported.
 This update introduces two new CLI flags that help dynamic plugin developers handle native modules. Both flags accept a list of packages. The `--suppress-native-package` flag does not require the native module at runtime. It replaces the native module with an empty package that displays an error. The `--allow-native-package` flag instructs the CLI to allow the native package during checks, and tests a plugin that uses a native module.
 
 
+
 .Additional resources
 * link:https://issues.redhat.com/browse/RHIDP-5062[RHIDP-5062]
 
@@ -145,6 +146,7 @@ With this update, users can select texts when reporting a documentation (TechDoc
 Previously, the `export-dynamic-plugin` failed with an error that the `stdout maxBuffer` length was exceeded.
 
 With this update, the CLI redirects the output of the {{yarn install}} command it performs during the export process to a file. Therefore, a successful completion of the {{yarn install}} command and verification of the `export-dynamic-plugin`, cleans up the file. The file is available for troubleshooting when the dynamic plugin validation checks fail.
+
 
 .Additional resources
 * link:https://issues.redhat.com/browse/RHIDP-5136[RHIDP-5136]

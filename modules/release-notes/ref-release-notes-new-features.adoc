@@ -47,12 +47,10 @@ Identify the flavor of Backstage that is running. Default value: `rhdh`
 You can now mount directories from pre-created PersistentVolumeClaims (PVCs) using the `spec.application.extraFiles.pvcs` field, while configuring RHDH Operator.
 For more information, see link:https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.3/html-single/administration_guide_for_red_hat_developer_hub/index#proc-rhdh-deployment-config_assembly-admin-templates[Persistent Volume Claim (PVC)].
 
-
 [id="feature-rhidp-4805"]
 == Authenticating with {rhbk-brand-name}
 
 With this update, you can use {rhbk-brand-name} as an authentication provider. The Keycloak plugin will now support ingesting users and groups with {rhbk-brand-name}. For more details, see link:https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/26.0/html-single/getting_started_guide/index#getting-started-zip-start-red-hat-build-of-keycloak[Authentication with {rhbk-brand-name}].
-
 
 [id="feature-rhidp-4806"]
 == Ability to install third-party plugins in {product-very-short}
@@ -178,17 +176,7 @@ Two plugins previously under the @janus-idp scope have moved to @red-hat-develop
 
 | `@janus-idp/backstage-plugin-bulk-import-backend`
 | `@red-hat-developer-hub/backstage-plugin-bulk-import-backend`
-
-| `@janus-idp/backstage-plugin-bulk-import-backend`
-| `@red-hat-developer-hub/backstage-plugin-bulk-import-backend`
 |===
-
-With this release, the following plugins have been added:
-
-* Signals (frontend) - RH Tech Preview
-* Notifications (backend) - RH Tech Preview
-* Notifications (frontend) - RH Tech Preview
-* Notifications Module Email - RH Tech Preview
 
 [id="feature-rhidp-5156"]
 == The catalog backend module logs plugin is enabled
