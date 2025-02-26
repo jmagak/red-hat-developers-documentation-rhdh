@@ -1,0 +1,23 @@
+[id="customizing-your-product-global-header_{context}"]
+= Customizing your {product} global header
+
+As an administrator, you can add a global header to your {product-custom-resource-type} instance. You can enable the global header by default.
+You can do the following:
+
+* Add a logo, search, notifications, users settings, help, and more.
+* Customize the order and position of icons and features by placing them on either the left or right side of the header.
+
+.Prerequisites
+* You have configured your {product-custom-resource-type} instance.
+* You have administrative access and can modify a global header.
+
+.Procedure
+
+* Set the enabled property to `true`. For example:
+
+[source,yaml]
+----
+globalHeader:
+  enabled: true
+----
+* To disable this feature, update the configuration file by setting the property to `false`.
