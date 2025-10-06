@@ -22,5 +22,9 @@ For the 1.7.0 release, this is a deprecation notice only; there are no breaking 
 
 For more information, see {installing-and-viewing-plugins-book-link}#proc-load-plugin-oci-image_assembly-install-third-party-plugins-rhdh[Loading a plugin packaged as an OCI image].
 
+
 .Additional resources
 * link:https://issues.redhat.com/browse/RHIDP-8525[RHIDP-8525]
+
+
+

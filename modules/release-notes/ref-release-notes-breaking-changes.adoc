@@ -18,7 +18,7 @@ With this update, you can do any of the following workarounds:
 .. Set the `NPM_CONFIG_USERCONFIG` environment variable to reference to the mounted `.npmrc` file in the `spec.deployment.patch` section.
 +
 .Example of a Secret containing the .npmrc file
-[source,yaml,subs="+attributes,+quotes"]
+[source,yaml,subs=&#39;+attributes,+quotes&#39;]
 ----
 apiVersion: v1
 kind: Secret
@@ -28,7 +28,7 @@ type: Opaque
 stringData:
   .npmrc: |
     @my-company:registry=https://my-company.example.com
-    //<registry-url>:_authToken=<auth-token>
+    //&lt;registry-url&gt;:_authToken=&lt;auth-token&gt;
 ---
 apiVersion: rhdh.redhat.com/v1alpha3
 kind: Backstage
