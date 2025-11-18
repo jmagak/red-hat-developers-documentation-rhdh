@@ -15,5 +15,5 @@ Technology Preview features are not supported with Red Hat production service le
 .Additonal resources
 * link:https://access.redhat.com/support/offerings/techpreview/[Technology Preview Features Scope]
 * link:https://access.redhat.com/policy/developerhub-support-policy[Red Hat Developer Support Policy]
-* {ansible-automation-platform-docs-link}/html-single/using_ansible_plug-ins_for_red_hat_developer_hub/index[_Using Ansible plug-ins for {product}_]
+* {ansible-automation-platform-docs-link}/html-single/using_ansible_plug-ins_for_red_hat_developer_hub/index[Using Ansible plug-ins for {product}]
 
