@@ -37,3 +37,4 @@ IgnoreURLs: # List URLS that are not published, false positives, websites refusi
   - https://docs.redhat.com/en/documentation/red_hat_openshift_serverless/1.37.1#serverless-logic-managing-persistence
   - https://docs.redhat.com/en/documentation/red_hat_openshift_serverless/1.37.1
   - https://docs.redhat.com/en/documentation/red_hat_openshift_serverless/1.37.1#serverless-logic-upgrading-operator
+  - https://grafana.com/docs/loki/latest/query/log_queries/#log-stream-selector
