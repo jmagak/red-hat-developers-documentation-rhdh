@@ -11,4 +11,5 @@ include::artifacts/attributes.adoc[]
 [id="{context}"]
 = {title}
 
+[role="_abstract"]
 include::additional-capabilities/ref-rhdh-capabilities.adoc[]
