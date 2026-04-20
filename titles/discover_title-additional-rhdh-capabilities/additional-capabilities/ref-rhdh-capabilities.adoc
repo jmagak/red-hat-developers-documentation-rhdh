@@ -1,6 +1,7 @@
 :_mod-docs-content-type: REFERENCE
 [id='additional-rhdh-capabilities_{context}']
 
+[role="_abstract"]
 *DISCLAIMER:* This document includes early, evolving, or supplemental content related to {product-very-short} capabilities. It may cover newly introduced features, features that are still maturing, or supported functionality that is not yet fully documented in the official product documentation. This content is authored by {company-name} experts, but has not yet been tested on every supported configuration.
 
 The content in this document describes preview or early-stage capabilities that are provided to offer early guidance and improve discoverability while the documentation continues to evolve. As a result, the structure, depth, and level of detail might vary. Information may be updated, reorganized, or removed based on product changes and user feedback.
@@ -516,7 +517,7 @@ spec:
 
 ---
 
-=== Troubleshooting
+== Troubleshooting
 
 *Notifications not appearing in {product-very-short}*
 
@@ -623,7 +624,7 @@ kubectl rollout restart deployment -n openshift-gitops -l app.kubernetes.io/name
 
 ---
 
-=== Security Considerations
+== Security Considerations
 
 1. **Use strong tokens** - Generate random tokens with sufficient entropy.
 2. **Rotate tokens periodically** - Update both Argo CD secret and {backstage} config.
@@ -632,7 +633,7 @@ kubectl rollout restart deployment -n openshift-gitops -l app.kubernetes.io/name
 
 ---
 
-=== Additional Resources
+== Additional Resources
 
 * link:https://argo-cd.readthedocs.io/en/stable/operator-manual/notifications/[Argo CD Notifications Documentation]
 * link:https://backstage.io/docs/notifications/[{backstage} Notifications Plugin]

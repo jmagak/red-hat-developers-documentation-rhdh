@@ -12,4 +12,4 @@ include::artifacts/attributes.adoc[]
 = {title}
 
 [role="_abstract"]
-include::additional-capabilities/additional-rhdh-capabilities.adoc[]
+include::additional-capabilities/ref-rhdh-capabilities.adoc[]
