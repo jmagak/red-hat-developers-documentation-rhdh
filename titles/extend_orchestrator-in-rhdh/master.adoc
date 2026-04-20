@@ -39,3 +39,4 @@ include::assemblies/extend_orchestrator-in-rhdh/assembly-automate-workflow-deplo
 include::assemblies/extend_orchestrator-in-rhdh/assembly-diagnose-and-resolve-serverless-workflow-issues.adoc[leveloffset=+1]
 
 include::assemblies/extend_orchestrator-in-rhdh/assembly-technical-appendix.adoc[leveloffset=+1]
+
