@@ -1,10 +1,11 @@
+:_mod-docs-content-type: REFERENCE
 [id='additional-rhdh-capabilities_{context}']
 
 *DISCLAIMER:* This document includes early, evolving, or supplemental content related to {product-very-short} capabilities. It may cover newly introduced features, features that are still maturing, or supported functionality that is not yet fully documented in the official product documentation. This content is authored by {company-name} experts, but has not yet been tested on every supported configuration.
 
 The content in this document describes preview or early-stage capabilities that are provided to offer early guidance and improve discoverability while the documentation continues to evolve. As a result, the structure, depth, and level of detail might vary. Information may be updated, reorganized, or removed based on product changes and user feedback.
 
-Where applicable, individual features retain their respective support status (for example, Supported, Technology Preview, or Developer Preview). Refer to the feature-specific documentation for details about the link:https://access.redhat.com/support[support] scope.
+Where applicable, individual features retain their respective support status (for example, Supported, {technology-preview}, or {developer-preview}). Refer to the feature-specific documentation for details about the link:https://access.redhat.com/support[support] scope.
 
 == Integrate Argo CD notifications with {product}
 
@@ -20,9 +21,10 @@ This guide explains how to configure Argo CD to send notifications directly to t
 _This task is intended for Platform Engineers; it involves cluster-wide runtime changes_.
 ====
 
-.Overview
+Overview:
 
 The following diagram illustrates the flow from an Argo CD event in the cluster to the {product-very-short} user interface.
+[subs="+attributes,+quotes"]
 ----
 ┌────────────────────────────────────────────────────────────────────┐
 │                    Kubernetes / OpenShift Cluster                  │
@@ -38,14 +40,14 @@ The following diagram illustrates the flow from an Argo CD event in the cluster 
                                               │ (with auth token)
                                               ▼
                     ┌────────────────────────────────────────────┐
-                    │              Backstage                     │
+                    │              {backstage}                     │
                     │  Endpoint: /api/notifications/notifications│
                     │  ──────────────────────────────────────────│
                     │  Shows notifications to users in the UI    │
                     └────────────────────────────────────────────┘
 ----
 
-.Prerequisites
+Prerequisites:
 
 Before you begin, make sure you have the following:
 
@@ -55,7 +57,7 @@ Before you begin, make sure you have the following:
 
 ---
 
-.Part 1: Enable the notifications plugin in {product-very-short}
+Part 1: Enable the notifications plugin in {product-very-short}:
 
 *Environment*: {product-very-short} Configuration.
 
@@ -95,7 +97,7 @@ backend:
 
 ---
 
-.Part 2: Argo CD configuration
+Part 2: Argo CD configuration:
 
 *Environment*: OpenShift Cluster (executing `oc` commands).
 
@@ -410,7 +412,7 @@ kubectl apply -f argocd-notifications-cm.yaml
 
 ---
 
-.Part 3: Enable notifications for your application
+Part 3: Enable notifications for your application:
 
 *Environment*: OpenShift Cluster (Argo CD Application manifests).
 
@@ -420,7 +422,7 @@ Update individual Argo CD `Application` manifests to enable the notifications fo
 
 Each Argo CD Application that should send notifications needs two things:
 
-1. **The Backstage entity reference** - tells Argo CD which {backstage} entity should receive notifications.
+1. **The {backstage} entity reference** - tells Argo CD which {backstage} entity should receive notifications.
 2. **Trigger subscriptions** - tells Argo CD which events to notify about.
 
 [IMPORTANT]
@@ -428,7 +430,7 @@ Each Argo CD Application that should send notifications needs two things:
 The subscription annotation format is `notifications.argoproj.io/subscribe.<trigger-name>.<service>`. The trigger name must match exactly what you configured (with the `-backstage` suffix).
 ====
 
-[source,yaml]
+[source,yaml,subs="+attributes,+quotes"]
 ----
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -436,7 +438,7 @@ metadata:
   name: my-application
   namespace: openshift-gitops
   annotations:
-    # 1. Map to Backstage entity (REQUIRED)
+    # 1. Map to {backstage} entity (REQUIRED)
     backstage.io/entity-ref: 'component:default/my-application'
 
     # 2. Subscribe to notification triggers (add the ones you want)
@@ -450,7 +452,7 @@ spec:
 
 ---
 
-.Example: Complete Setup Flow
+Example: Complete Setup Flow:
 **Scenario**
 
 You have a service called `order-service` managed by Argo CD, and you want the team to receive {backstage} notifications on sync events.
@@ -475,7 +477,7 @@ spec:
 
 . *Argo CD Application*
 +
-[source,yaml]
+[source,yaml,subs="+attributes,+quotes"]
 ----
 # argocd/order-service-app.yaml
 apiVersion: argoproj.io/v1alpha1
@@ -484,7 +486,7 @@ metadata:
   name: order-service
   namespace: openshift-gitops
   annotations:
-    # Link to Backstage entity
+    # Link to {backstage} entity
     backstage.io/entity-ref: 'component:default/order-service'
     # Subscribe to notifications (note the -backstage suffix in trigger names)
     notifications.argoproj.io/subscribe.on-deployed-backstage.backstage: ''
@@ -509,14 +511,14 @@ spec:
 
 1. **Developer pushes code** → Argo CD detects change and syncs.
 2. **Sync succeeds** → Argo CD notifications controller fires `on-deployed-backstage` trigger.
-3. **Webhook sent** → POST to Backstage `/api/notifications/notifications`.
-4. **Notification appears** → Team sees "🚀 order-service - Deployed" in Backstage with a link to Argo CD.
+3. **Webhook sent** → POST to {backstage} `/api/notifications/notifications`.
+4. **Notification appears** → Team sees "🚀 order-service - Deployed" in {backstage} with a link to Argo CD.
 
 ---
 
 === Troubleshooting
 
-==== Notifications not appearing in {product-very-short}
+*Notifications not appearing in {product-very-short}*
 
 1. **Check notifications controller is running:**
 +
@@ -553,7 +555,7 @@ kubectl get configmap argocd-notifications-cm -n openshift-gitops -o jsonpath='{
 kubectl get application my-app -n openshift-gitops -o jsonpath='{.metadata.annotations}' | jq .
 ----
 
-==== "notification service 'backstage' is not supported"
+*"notification service 'backstage' is not supported"*
 
 This error means the webhook service is not configured.
 
@@ -564,7 +566,7 @@ Common causes include the following:
 
 **Solution:** Use the `NotificationsConfiguration` CR for OpenShift GitOps (see Part 2).
 
-==== Webhook Returns 400 Bad Request / "not valid JSON"
+*Webhook Returns 400 Bad Request / "not valid JSON"*
 
 This means the trigger is using the wrong template format (text instead of JSON).
 
@@ -579,7 +581,7 @@ Common causes include the following:
 * Trigger: `trigger.on-sync-succeeded-backstage`
 * Subscription: `notifications.argoproj.io/subscribe.on-sync-succeeded-backstage.backstage`
 
-==== Link Shows *<no value>* or Broken URL
+*Link Shows pass:[*]<no value>pass:[*] or Broken URL*
 
 The `{{.context.argocdUrl}}` template variable is not configured.
 
@@ -606,11 +608,11 @@ data:
     argocdUrl: https://your-argocd-url.com
 ----
 
-==== Authentication Errors
+*Authentication Errors*
 
 If you see `401 Unauthorized` or token errors:
 
-1. Verify the token in `argocd-notifications-secret` matches your Backstage config.
+1. Verify the token in `argocd-notifications-secret` matches your {backstage} config.
 2. Check the Authorization header format: `Bearer $backstage-token`.
 3. Restart the notifications controller after secret changes:
 +
@@ -624,8 +626,8 @@ kubectl rollout restart deployment -n openshift-gitops -l app.kubernetes.io/name
 === Security Considerations
 
 1. **Use strong tokens** - Generate random tokens with sufficient entropy.
-2. **Rotate tokens periodically** - Update both Argo CD secret and Backstage config.
-3. **Use HTTPS** - Ensure Backstage is accessible over HTTPS in production.
+2. **Rotate tokens periodically** - Update both Argo CD secret and {backstage} config.
+3. **Use HTTPS** - Ensure {backstage} is accessible over HTTPS in production.
 4. **Network policies** - Consider restricting which pods can reach {backstage}.
 
 ---
@@ -633,5 +635,5 @@ kubectl rollout restart deployment -n openshift-gitops -l app.kubernetes.io/name
 === Additional Resources
 
 * link:https://argo-cd.readthedocs.io/en/stable/operator-manual/notifications/[Argo CD Notifications Documentation]
-* link:https://backstage.io/docs/notifications/[Backstage Notifications Plugin]
+* link:https://backstage.io/docs/notifications/[{backstage} Notifications Plugin]
 * link:https://argo-cd.readthedocs.io/en/stable/operator-manual/notifications/services/webhook/[Argo CD Webhook Service Configuration]
