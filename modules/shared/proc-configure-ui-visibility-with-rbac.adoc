@@ -1,7 +1,7 @@
 :_mod-docs-content-type: PROCEDURE
 
 [id="configure-ui-visibility-with-rbac_{context}"]
-= Configure UI visibility with RBAC
+= Set up permission-based visibility for pages and tabs
 
 [role="_abstract"]
 You can configure UI visibility for pages, entity tabs, navigation items, and cards by using the `if` predicate in extension blueprints to control which UI elements are visible based on user permissions.
@@ -16,7 +16,7 @@ You can configure UI visibility for pages, entity tabs, navigation items, and ca
 
 . Determine which UI elements you want to control with RBAC permissions.
 
-. Identify the permission names that should gate access to those UI elements.
+. Identify the permission names that should get access to those UI elements.
 +
 [NOTE]
 ====

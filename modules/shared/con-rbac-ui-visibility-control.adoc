@@ -1,7 +1,7 @@
 :_mod-docs-content-type: CONCEPT
 
 [id="rbac-ui-visibility-control_{context}"]
-= RBAC UI visibility control
+= Control UI visibility with permissions to create a cleaner interface
 
 [role="_abstract"]
 {product} ({product-very-short}) supports fine-grained visibility control for UI elements based on role-based access control (RBAC) permissions, enabling a cleaner user experience by hiding pages, tabs, and navigation items that users cannot access.
