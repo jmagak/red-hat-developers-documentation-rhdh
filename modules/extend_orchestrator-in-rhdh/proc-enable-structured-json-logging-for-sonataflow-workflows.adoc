@@ -84,8 +84,6 @@ data:
 oc logs <workflow_pod_name> | grep processInstanceId
 ----
 +
-.Example output
-+
 [source,bash]
 ----
 {"timestamp":"...","level":"INFO","message":"...","mdc":{"processInstanceId":"abc-123-..."}}

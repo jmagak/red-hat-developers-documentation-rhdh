@@ -10,7 +10,6 @@ Use the following examples to deploy and integrate Jaeger and Loki with the Sona
 
 Jaeger provides distributed tracing visualization for SonataFlow workflows.
 
-.Development deployment
 [source,yaml]
 ----
 apiVersion: v1
@@ -102,7 +101,6 @@ spec:
   type: ClusterIP
 ----
 
-.OpenShift route
 [source,yaml]
 ----
 apiVersion: route.openshift.io/v1
@@ -136,7 +134,6 @@ quarkus.otel.propagators=tracecontext,baggage,jaeger
 
 For production environments, use the Jaeger Operator with Elasticsearch storage:
 
-.Production deployment
 [source,yaml]
 ----
 apiVersion: jaegertracing.io/v1
@@ -175,7 +172,6 @@ spec:
 
 Loki supports OpenTelemetry Protocol (OTLP) for direct log ingestion from SonataFlow workflows.
 
-.Configuration example
 [source,yaml]
 ----
 apiVersion: v1
@@ -230,7 +226,6 @@ data:
             period: 24h
 ----
 
-.Deployment example
 [source,yaml]
 ----
 apiVersion: apps/v1
@@ -346,7 +341,6 @@ quarkus.otel.resource.attributes=\
 
 Deploy an OpenTelemetry collector between workflows and backends for advanced log processing, filtering, and multi-destination export.
 
-.Pipeline configuration
 [source,yaml,subs="+attributes,+quotes"]
 ----
 # Collector routes to both Jaeger and Loki

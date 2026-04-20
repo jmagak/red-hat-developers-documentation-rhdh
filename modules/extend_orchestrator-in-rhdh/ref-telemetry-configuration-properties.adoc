@@ -6,7 +6,6 @@
 [role="_abstract"]
 Configure OpenTelemetry in SonataFlow by using the primary properties described in the following table:
 
-.OpenTelemetry configuration properties
 [cols="35%,45%,20%", options="header"]
 |===
 | Property  | Description | Default

@@ -6,7 +6,6 @@
 [role="_abstract"]
 Diagnose and resolve issues with missing observability data or failed context propagation in SonataFlow.
 
-.Common issues and resolutions
 [cols="25%,35%,40%", options="header"]
 |===
 | Symptom
