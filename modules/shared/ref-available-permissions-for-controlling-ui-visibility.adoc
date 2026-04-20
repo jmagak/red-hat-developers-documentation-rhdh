@@ -1,6 +1,6 @@
 :_mod-docs-content-type: REFERENCE
 
-[id="ui-visibility-permissions-reference_{context}"]
+[id="available-permissions-for-controlling-ui-visibility_{context}"]
 = Available permissions for controlling UI visibility
 
 [role="_abstract"]

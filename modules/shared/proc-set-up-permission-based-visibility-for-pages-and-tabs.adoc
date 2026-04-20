@@ -1,6 +1,6 @@
 :_mod-docs-content-type: PROCEDURE
 
-[id="configure-ui-visibility-with-rbac_{context}"]
+[id="set-up-permission-based-visibility-for-pages-and-tabs_{context}"]
 = Set up permission-based visibility for pages and tabs
 
 [role="_abstract"]
