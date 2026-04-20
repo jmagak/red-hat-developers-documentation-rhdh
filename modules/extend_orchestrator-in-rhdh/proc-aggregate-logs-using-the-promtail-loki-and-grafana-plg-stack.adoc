@@ -1,6 +1,6 @@
 :_mod-docs-content-type: PROCEDURE
 
-[id="aggregate-logs-using-the-plg-stack_{context}"]
+[id="aggregate-logs-using-the-promtail-loki-and-grafana-plg-stack_{context}"]
 = Aggregate logs using the Promtail, Loki and Grafana (PLG) stack
 
 [role="_abstract"]
@@ -230,9 +230,9 @@ spec:
 
 .Verification
 
-* Access the Grafana **Explore** view.
+. Access the Grafana **Explore** view.
 
-* Run the following LogQL query, replacing `<instance_id>` with a valid ID:
+. Run the following LogQL query, replacing `<instance_id>` with a valid ID:
 +
 [source,json,subs="+attributes,+quotes"]
 ----

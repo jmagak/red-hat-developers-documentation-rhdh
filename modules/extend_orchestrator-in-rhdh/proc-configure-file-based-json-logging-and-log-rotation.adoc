@@ -39,10 +39,10 @@ quarkus.log.file.rotation.rotate-on-boot=true
 +
 This configuration does the following:
 
-* Rotates logs when they reach 10MB
-* Keeps up to 5 backup files
-* Adds date suffix to rotated files
-* Rotates on application startup
+. Rotates logs when they reach 10MB
+. Keeps up to 5 backup files
+. Adds date suffix to rotated files
+. Rotates on application startup
 
 . Set log level for file output:
 +
@@ -80,14 +80,14 @@ oc logs -n sonataflow-infra your-workflow-pod-name | head -5
 
 .Verification
 
-* Access the workflow container and verify the log file exists and is receiving JSON data:
+. Access the workflow container and verify the log file exists and is receiving JSON data:
 +
 [source,bash,subs="+attributes,+quotes"]
 ----
 oc exec <pod_name> -- ls -l /var/log/sonataflow/workflow.log
 ----
 
-* Verify that the file contains JSON data:
+. Verify that the file contains JSON data:
 +
 [source,bash,subs="+attributes,+quotes"]
 ----

@@ -6,7 +6,7 @@
 [role="_abstract"]
 Diagnose and resolve issues with missing observability data or failed context propagation in SonataFlow.
 
-.OpenTelemetry troubleshooting guide
+.Common issues and resolutions
 [cols="25%,35%,40%", options="header"]
 |===
 | Symptom
@@ -30,39 +30,37 @@ Diagnose and resolve issues with missing observability data or failed context pr
 | Ensure `quarkus.otel.propagators` includes all required formats (for example, `tracecontext` and `baggage`).
 |===
 
-.Diagnosing missing traces
+== Diagnose missing traces
 
-.. Verify that OpenTelemetry is enabled in the workflow ConfigMap:
+. Verify that OpenTelemetry is enabled in the workflow ConfigMap:
 +
 [source,bash]
 ----
-kubectl get cm {workflow-name}-props -n workflows -o yaml
+oc get cm {workflow-name}-props -n workflows -o yaml
 ----
 
 .. Check the pod logs for initialization errors:
 +
 [source,bash]
 ----
-kubectl logs deployment/{deployment-name} -n workflows | grep -i "otel"
+oc logs deployment/{deployment-name} -n workflows | grep -i "otel"
 ----
 
 .. Test the connection to the Jaeger collector from within the workflow pod:
 +
 [source,bash]
 ----
-kubectl exec deployment/{deployment-name} -n workflows -- curl -v http://jaeger-collector.observability.svc.cluster.local:4317
+oc exec deployment/{deployment-name} -- curl -v http://jaeger-collector:4317
 ----
 
-.Configuring authentication headers
-If your observability platform requires authentication, add the following property to your `application.properties` file:
-
+. Configure authentication headers. If your observability platform requires authentication, add the following property to your `application.properties` file:
++
 [source,bash]
 ----
 quarkus.otel.exporter.otlp.headers=authorization=Bearer ${API_TOKEN}
 ----
 
-.Resolving context propagation issues
-To ensure trace IDs are maintained across service boundaries, configure the following propagators and enable JSON logging to verify the IDs in the output:
+. Resolve context propagation issues. To ensure trace IDs are maintained across service boundaries, configure the following propagators and enable JSON logging to verify the IDs in the output:
 
 [source,bash]
 ----

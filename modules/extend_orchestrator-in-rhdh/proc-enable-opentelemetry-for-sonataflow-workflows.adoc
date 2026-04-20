@@ -72,23 +72,23 @@ sonataflow.otel.events.enabled=true
 
 .Verification
 
-* Verify that the OpenTelemetry addon is loaded by checking the pod logs:
+. Verify that the OpenTelemetry addon is loaded by checking the pod logs:
 +
 [source,bash]
 ----
-kubectl logs -n workflows deployment/onboarding-workflow | grep "sonataflow-addons-quarkus-opentelemetry"
+oc logs -n workflows deployment/onboarding-workflow | grep "sonataflow-addons-quarkus-opentelemetry"
 ----
 
-* Verify successful trace export:
+. Verify successful trace export:
 +
 [source,bash]
 ----
-kubectl logs -n workflows deployment/greeting | grep -i "export\|batch"
+oc logs -n workflows deployment/greeting | grep -i "export\|batch"
 ----
 
-* Confirm that the observability backend (for example, Jaeger) is receiving data:
+. Confirm that the observability backend (for example, Jaeger) is receiving data:
 +
 [source,bash]
 ----
-kubectl logs -n observability deployment/jaeger | grep -i "span\|trace"
+oc logs -n observability deployment/jaeger | grep -i "span\|trace"
 ----

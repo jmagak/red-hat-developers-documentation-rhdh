@@ -6,7 +6,7 @@
 [role="_abstract"]
 Configure OpenTelemetry in SonataFlow by using the primary properties described in the following table:
 
-.OpenTelemetry configuration properties for SonataFlow
+.OpenTelemetry configuration properties
 [cols="35%,45%,20%", options="header"]
 |===
 | Property  | Description | Default
@@ -25,7 +25,7 @@ Configure OpenTelemetry in SonataFlow by using the primary properties described 
 
 |`quarkus.otel.exporter.otlp.protocol`
 |The transport protocol. Supported values are `grpc` or `http/protobuf`.
-|`grp`
+|`grpc`
 
 |`quarkus.otel.traces.sampler`
 |The sampling strategy. For example, `always_on`, `always_off`, or `parentbased_always_on`.

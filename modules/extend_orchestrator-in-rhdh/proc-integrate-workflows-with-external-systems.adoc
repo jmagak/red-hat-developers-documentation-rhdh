@@ -36,6 +36,6 @@ receivers:
 
 .Verification
 
-* Trigger a test alert in your workflow environment.
+. Trigger a test alert in your workflow environment.
 
-* Monitor the external notification service (for example, the Slack channel `#workflow-alerts`). A notification appears in the external service containing the summary and details of the triggered alert.
+. Monitor the external notification service (for example, the Slack channel `#workflow-alerts`). A notification appears in the external service containing the summary and details of the triggered alert.

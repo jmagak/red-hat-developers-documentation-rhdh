@@ -61,6 +61,6 @@ Configure alerts to monitor SonataFlow workflows. These alerts notify you when w
 
 .Verification
 
-* Access the monitoring dashboard, such as the Prometheus or OpenShift Console.
+. Access the monitoring dashboard, such as the Prometheus or OpenShift Console.
 
-* Verify that the alerts appear in the list under the *Alerts* tab.
+. Verify that the alerts appear in the list under the *Alerts* tab.

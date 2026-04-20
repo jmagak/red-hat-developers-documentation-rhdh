@@ -1,10 +1,10 @@
 :_mod-docs-content-type: PROCEDURE
 
-[id="configure-telemetry-exporters_{context}"]
+[id="configure-telemetry-data-exporters-for-observability-platforms_{context}"]
 = Configure telemetry data exporters for observability platforms
 
 [role="_abstract"]
-To monitor serverless workflows in a distributed environment, export trace data to an external observability platform, such as Jaeger or an OpenTelemetry Collector. By configuring an export strategy and externalizing environment variables, you ensure reliable telemetry delivery and avoid hardcoding configurations in production builds.
+Export trace data to an external observability platform such as Jaeger or an OpenTelemetry Collector. Configure an export strategy and externalize environment variables to ensure reliable telemetry delivery in production.
 
 .Prerequisites
 

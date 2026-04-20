@@ -1,17 +1,16 @@
-:_mod-docs-content-type: CONCEPT
+:_mod-docs-content-type: REFERENCE
 
-[id="observability-configuration-examples_{context}"]
+[id="observability-tool-configuration-examples_{context}"]
 = Observability tool configuration examples
 
 [role="_abstract"]
 Use the following examples to deploy and integrate Jaeger and Loki with the SonataFlow OpenTelemetry implementation. These examples include configurations for development and production environments.
 
-. Jaeger distributed tracing
-+
+== Jaeger distributed tracing
+
 Jaeger provides distributed tracing visualization for SonataFlow workflows.
-+
-.Jaeger all-in-one deployment (development and testing)
-+
+
+.Development deployment
 [source,yaml]
 ----
 apiVersion: v1
@@ -102,9 +101,8 @@ spec:
     targetPort: 16686
   type: ClusterIP
 ----
-+
-.OpenShift route for UI access
-+
+
+.OpenShift route
 [source,yaml]
 ----
 apiVersion: route.openshift.io/v1
@@ -122,11 +120,9 @@ spec:
     termination: edge
     insecureEdgeTerminationPolicy: Redirect
 ----
-+
-.Workflow configuration for Jaeger
-+
+
 Add these properties to the `application.properties` file of your workflow:
-+
+
 [source,bash]
 ----
 # Direct connection to Jaeger
@@ -137,11 +133,10 @@ quarkus.otel.traces.exporter=cdi
 # Additional Jaeger-specific propagation
 quarkus.otel.propagators=tracecontext,baggage,jaeger
 ----
-+
-.Production deployment with Elasticsearch
-+
+
 For production environments, use the Jaeger Operator with Elasticsearch storage:
-+
+
+.Production deployment
 [source,yaml]
 ----
 apiVersion: jaegertracing.io/v1
@@ -176,12 +171,11 @@ spec:
         memory: 512Mi
 ----
 
-. Loki log aggregation
-+
+== Loki log aggregation
+
 Loki supports OpenTelemetry Protocol (OTLP) for direct log ingestion from SonataFlow workflows.
-+
-.Loki configuration for OpenTelemetry
-+
+
+.Configuration example
 [source,yaml]
 ----
 apiVersion: v1
@@ -235,9 +229,8 @@ data:
             prefix: index_
             period: 24h
 ----
-+
-.Loki deployment
-+
+
+.Deployment example
 [source,yaml]
 ----
 apiVersion: apps/v1
@@ -319,11 +312,9 @@ spec:
     targetPort: 9096
   type: ClusterIP
 ----
-+
-.Workflow configuration for Loki and Jaeger
-+
+
 To route logs to Loki and traces to Jaeger, use the following configuration:
-+
+
 [source,bash]
 ----
 # OpenTelemetry Configuration
@@ -351,11 +342,11 @@ quarkus.otel.resource.attributes=\
   deployment.environment=production
 ----
 
-. Optional: OpenTelemetry collector for advanced processing
-+
+== OpenTelemetry collector
+
 Deploy an OpenTelemetry collector between workflows and backends for advanced log processing, filtering, and multi-destination export.
-+
-.Collector pipeline configuration
+
+.Pipeline configuration
 [source,yaml,subs="+attributes,+quotes"]
 ----
 # Collector routes to both Jaeger and Loki
