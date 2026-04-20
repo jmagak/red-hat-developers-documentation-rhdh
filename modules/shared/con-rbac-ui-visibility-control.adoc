@@ -1,6 +1,6 @@
 :_mod-docs-content-type: CONCEPT
 
-[id="rbac-ui-visibility-control_{context}"]
+[id="control-ui-visibility-with-permissions-to-create-a-cleaner-interface_{context}"]
 = Control UI visibility with permissions to create a cleaner interface
 
 [role="_abstract"]
@@ -37,7 +37,7 @@ This means that the evaluation happens before the UI renders, ensuring that user
 
 == Supported permission types
 
-{product-veryshort} supports the following permission types for UI visibility control:
+{product-very-short} supports the following permission types for UI visibility control:
 
 Basic permissions without attributes::
 Permissions that are evaluated directly in the permission policy and return an *ALLOW* or *DENY* result.
