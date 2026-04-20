@@ -2,11 +2,11 @@
 [id='additional-rhdh-capabilities_{context}']
 
 [role="_abstract"]
-*DISCLAIMER:* This document includes early, evolving, or supplemental content related to {product-very-short} capabilities. It may cover newly introduced features, features that are still maturing, or supported functionality that is not yet fully documented in the official product documentation. This content is authored by {company-name} experts, but has not yet been tested on every supported configuration.
+*DISCLAIMER:* Early, evolving, or supplemental {product-very-short} capabilities are documented below. Content may cover newly introduced features, features that are still maturing, or supported functionality that is not yet fully documented in the official product documentation. Content is authored by {company-name} experts, but has not yet been tested on every supported configuration.
 
-The content in this document describes preview or early-stage capabilities that are provided to offer early guidance and improve discoverability while the documentation continues to evolve. As a result, the structure, depth, and level of detail might vary. Information may be updated, reorganized, or removed based on product changes and user feedback.
+Preview or early-stage capabilities are provided to offer early guidance and improve discoverability while the documentation continues to evolve. As a result, the structure, depth, and level of detail might vary. Information may be updated, reorganized, or removed based on product changes and user feedback.
 
-Where applicable, individual features retain their respective support status (for example, Supported, {technology-preview}, or {developer-preview}). Refer to the feature-specific documentation for details about the link:https://access.redhat.com/support[support] scope.
+Individual features retain their respective support status as documented. Refer to the feature-specific documentation for details about the link:https://access.redhat.com/support[support] scope.
 
 == Integrate Argo CD notifications with {product}
 
