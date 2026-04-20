@@ -8,8 +8,8 @@ You can configure UI visibility for pages, entity tabs, navigation items, and ca
 
 .Prerequisites
 
-* You have administrative access to {product-short}.
-* You have enabled the RBAC feature in {product-short}.
+* You have administrative access to {product-very-short}.
+* You have enabled the RBAC feature in {product-very-short}.
 * You have defined the required permissions for your plugins.
 
 .Procedure
@@ -20,8 +20,7 @@ You can configure UI visibility for pages, entity tabs, navigation items, and ca
 +
 [NOTE]
 ====
-Permissions must follow the naming pattern `<resource>.<action>` where the action is one of `create`, `read`, `update`, or `delete`.
-The system automatically infers the action attribute from the permission name.
+Permissions must follow the naming pattern `<resource>.<action>` where the action is one of `create`, `read`, `update`, or `delete`. The system automatically infers the action attribute from the permission name.
 ====
 
 . Configure the `if` predicate in your extension blueprint to control UI visibility based on permissions:
@@ -156,12 +155,7 @@ if: {
 
 .Verification
 
-. Log in to {product-short} as a user with limited permissions.
+. Log in to {product-very-short} as a user with limited permissions.
 . Verify that UI elements requiring permissions you do not have are hidden from view.
 . Log in as a user with the required permissions.
 . Verify that the UI elements are now visible and accessible.
-
-.Additional resources
-
-* xref:rbac-ui-visibility-control_{context}[RBAC UI visibility control]
-* xref:ui-visibility-permissions-reference_{context}[UI visibility permissions reference]

@@ -4,12 +4,11 @@
 = UI visibility permissions reference
 
 [role="_abstract"]
-Reference information about permissions used to control UI element visibility in {product-short}.
+Reference information about permissions used to control UI element visibility in {product-very-short}.
 
 == Plugin permissions for UI visibility
 
-The following table lists the permissions used by various plugins to control UI element visibility.
-These permissions follow the naming pattern `<resource>.<action>` where the action is inferred from the permission name.
+The following table lists the permissions used by various plugins to control UI element visibility. These permissions follow the naming pattern `<resource>.<action>` where the action is inferred from the permission name.
 
 [cols="25%,25%,50%", frame="all", options="header"]
 |===
@@ -117,18 +116,3 @@ Permission evaluation occurs during frontend initialization, before the UI rende
 This ensures that users never see UI elements they cannot access.
 However, it also means that no resource context is available during evaluation.
 ====
-
-== Handling unauthorized access
-
-If a user attempts to manually navigate to a URL for a hidden page, the following behavior occurs:
-
-* If the page is controlled by the `if` predicate, the route is not registered, resulting in a standard 404 Not Found error.
-* If the page is registered but the user lacks permissions, the user is redirected to an Unauthorized page.
-
-This prevents users from seeing a broken UI shell when attempting to access restricted content.
-
-.Additional resources
-
-* xref:rbac-ui-visibility-control_{context}[RBAC UI visibility control]
-* xref:configure-ui-visibility-with-rbac_{context}[Configuring UI visibility with RBAC]
-* xref:permission-policies-reference_{context}[Permission policies reference]
