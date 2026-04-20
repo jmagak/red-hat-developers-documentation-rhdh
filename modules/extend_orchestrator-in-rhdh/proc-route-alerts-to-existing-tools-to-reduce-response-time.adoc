@@ -1,10 +1,10 @@
 :_mod-docs-content-type: PROCEDURE
 
-[id="integrate-workflows-with-external-systems_{context}"]
-= Integrate workflows with external systems
+[id="route-alerts-to-existing-tools-to-reduce-response-time_{context}"]
+= Route alerts to existing tools to reduce response time
 
 [role="_abstract"]
-Integrate SonataFlow workflows with external notification systems, such as Slack, PagerDuty, or email. Routing alerts to external systems ensures that generated notifications reach the appropriate support teams.
+Receive failure notifications where your team already monitors incidents instead of checking a separate dashboard. Routing alerts to existing channels ensures on-call engineers see critical workflow issues immediately.
 
 .Prerequisites
 

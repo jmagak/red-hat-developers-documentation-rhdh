@@ -1,10 +1,10 @@
 :_mod-docs-content-type: PROCEDURE
 
-[id="enable-structured-json-logging-for-sonataflow-workflows_{context}"]
-= Enable structured JSON logging for SonataFlow workflows
+[id="enable-json-logging-to-search-logs-instantly-without-manual-parsing_{context}"]
+= Enable JSON logging to search logs instantly without manual parsing
 
 [role="_abstract"]
-Configure your SonataFlow workflows to emit logs in structured JSON format. Structured logging enables machine processing and correlates log entries with specific process instances across your log aggregation stack.
+Output logs as JSON instead of plain text so log platforms can automatically filter by process instance, error level, or trace ID. Structured logging eliminates manual parsing and enables instant searches across millions of log entries.
 
 SonataFlow workflows support structured JSON logging with automatic process instance correlation through:
 

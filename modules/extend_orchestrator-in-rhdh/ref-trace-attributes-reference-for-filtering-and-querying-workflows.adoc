@@ -1,10 +1,10 @@
 :_mod-docs-content-type: REFERENCE
 
-[id="workflow-telemetry-data-attributes_{context}"]
-= Workflow telemetry data attributes
+[id="trace-attributes-reference-for-filtering-and-querying-workflows_{context}"]
+= Trace attributes reference for filtering and querying workflows
 
 [role="_abstract"]
-SonataFlow enriches traces and logs with process instance metadata, lifecycle events, and context propagation headers. Use these telemetry data points to write LogQL queries, build dashboards, and filter traces in Jaeger, Grafana, or Loki.
+Automatically generated span attributes and lifecycle events including process IDs, workflow states, and execution milestones. Reference this data dictionary to build Jaeger queries that filter by workflow name, find failed executions, or track requests across service boundaries.
 
 This data allows you to track a workflow from start to finish, analyze external function calls, and correlate logs across asynchronous boundaries.
 

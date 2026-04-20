@@ -1,10 +1,10 @@
 :_mod-docs-content-type: PROCEDURE
 
-[id="correlate-logs-with-opentelemetry-traces_{context}"]
-= Correlate logs with OpenTelemetry traces
+[id="link-logs-to-traces-for-complete-failure-diagnosis_{context}"]
+= Link logs to traces for complete failure diagnosis
 
 [role="_abstract"]
-Integrate OpenTelemetry with your workflow logging to improve diagnostic capabilities. This integration adds `traceId` and `spanId` to your JSON logs, which enables you to navigate from a log entry to a distributed trace in an observability tool.
+Click a trace ID in any log entry to see the complete timeline of what happened across all services. Log-to-trace correlation turns a single error message into a full execution diagram showing every step and service call.
 
 .Prerequisites
 

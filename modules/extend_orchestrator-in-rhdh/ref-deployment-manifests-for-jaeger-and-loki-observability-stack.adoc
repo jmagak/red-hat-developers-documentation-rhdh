@@ -1,10 +1,10 @@
 :_mod-docs-content-type: REFERENCE
 
-[id="observability-tool-configuration-examples_{context}"]
-= Observability tool configuration examples
+[id="deployment-manifests-for-jaeger-and-loki-observability-stack_{context}"]
+= Deployment manifests for Jaeger and Loki observability stack
 
 [role="_abstract"]
-Use the following examples to deploy and integrate Jaeger and Loki with the SonataFlow OpenTelemetry implementation. These examples include configurations for development and production environments.
+Ready-to-deploy YAML manifests for Jaeger distributed tracing and Loki log aggregation in development and production environments. Use these examples to deploy the observability stack with pre-configured resource limits, OTLP endpoints, and workflow integration settings.
 
 == Jaeger distributed tracing
 

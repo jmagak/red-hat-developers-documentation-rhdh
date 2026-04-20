@@ -1,10 +1,10 @@
 :_mod-docs-content-type: PROCEDURE
 
-[id="configure-file-based-json-logging-and-log-rotation_{context}"]
-= Configure file-based JSON logging and log rotation
+[id="rotate-logs-automatically-to-prevent-pod-crashes-from-full-disks_{context}"]
+= Rotate logs automatically to prevent pod crashes from full disks
 
 [role="_abstract"]
-Configure your workflow to emit JSON logs to a file with automatic rotation. File-based logging enables sidecar log collection and prevents disk space issues in Kubernetes environments.
+Automatically archive old logs before the disk fills up and crashes your workflow pods. Log rotation keeps recent logs available for debugging while preventing storage from becoming a production incident.
 
 [IMPORTANT]
 ====

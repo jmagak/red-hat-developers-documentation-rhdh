@@ -1,10 +1,10 @@
 :_mod-docs-content-type: PROCEDURE
 
-[id="aggregate-logs-using-the-promtail-loki-and-grafana-plg-stack_{context}"]
-= Aggregate logs using the Promtail, Loki and Grafana (PLG) stack
+[id="centralize-logs-to-eliminate-ssh-access-for-troubleshooting_{context}"]
+= Centralize logs to eliminate SSH access for troubleshooting
 
 [role="_abstract"]
-Deploy and configure a Promtail sidecar to scrape workflow logs and push them to a Loki instance for storage and visualization in Grafana.
+Query logs from every workflow pod in your cluster using a single Grafana dashboard. Centralized logging means no more SSHing into individual pods—search by process ID, error type, or time range from your browser.
 
 .Prerequisites
 

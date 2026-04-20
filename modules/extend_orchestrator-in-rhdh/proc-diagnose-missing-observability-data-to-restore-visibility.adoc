@@ -1,10 +1,10 @@
 :_mod-docs-content-type: PROCEDURE
 
-[id="troubleshoot-observability-and-log-aggregation-in-sonataflow_{context}"]
-= Troubleshoot observability and log aggregation in SonataFlow
+[id="diagnose-missing-observability-data-to-restore-visibility_{context}"]
+= Diagnose missing observability data to restore visibility
 
 [role="_abstract"]
-Diagnose and resolve common issues with JSON logging, process context correlation, and log collection in a SonataFlow environment.
+Troubleshoot why logs show up as plain text, process instance IDs are empty, or traces do not appear in Jaeger. Step-by-step diagnostics quickly restore observability when workflows become invisible to monitoring.
 
 .Prerequisites
 

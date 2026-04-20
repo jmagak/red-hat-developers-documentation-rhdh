@@ -1,10 +1,10 @@
 :_mod-docs-content-type: PROCEDURE
 
-[id="enable-opentelemetry-for-sonataflow-workflows_{context}"]
-= Enable OpenTelemetry for SonataFlow workflows
+[id="collect-traces-to-see-execution-timing-and-failures_{context}"]
+= Collect traces to see execution timing and failures
 
 [role="_abstract"]
-Enable OpenTelemetry in your SonataFlow project to begin collecting distributed traces, metrics, and logs.
+Turn on distributed tracing to watch workflows execute step-by-step across services. Traces show exactly which operations run, how long they take, and where failures occur in the execution path.
 
 To enable observability features such as tracing and metrics in the SonataFlow runtime, you must add the OpenTelemetry addon and configure the workflow properties. The `sonataflow-addons-quarkus-opentelemetry` addon provides a standard configuration with minimal setup required.
 

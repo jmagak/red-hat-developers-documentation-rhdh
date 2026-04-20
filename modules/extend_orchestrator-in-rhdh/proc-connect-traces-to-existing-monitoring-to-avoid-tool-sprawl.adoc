@@ -1,10 +1,10 @@
 :_mod-docs-content-type: PROCEDURE
 
-[id="configure-telemetry-data-exporters-for-observability-platforms_{context}"]
-= Configure telemetry data exporters for observability platforms
+[id="connect-traces-to-existing-monitoring-to-avoid-tool-sprawl_{context}"]
+= Connect traces to existing monitoring to avoid tool sprawl
 
 [role="_abstract"]
-Export trace data to an external observability platform such as Jaeger or an OpenTelemetry Collector. Configure an export strategy and externalize environment variables to ensure reliable telemetry delivery in production.
+Route workflow traces to the observability tools your team already uses instead of learning a new system. Exporter configuration sends telemetry data to Jaeger, Grafana, or any OTLP-compatible platform.
 
 .Prerequisites
 

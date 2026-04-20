@@ -1,10 +1,10 @@
 :_mod-docs-content-type: PROCEDURE
 
-[id="configure-alerts-for-workflow-conditions_{context}"]
-= Configure alerts for workflow conditions
+[id="detect-workflow-failures-before-users-report-them_{context}"]
+= Detect workflow failures before users report them
 
 [role="_abstract"]
-Configure alerts to monitor SonataFlow workflows. These alerts notify you when workflows fail at high rates, when process instances are stuck, or when runtimes exceed expected thresholds.
+Set up automated alerts to notify your team when workflows fail at high rates, process instances become stuck, or runtimes exceed thresholds. Proactive alerting reduces mean time to detection for production issues.
 
 .Prerequisites
 
