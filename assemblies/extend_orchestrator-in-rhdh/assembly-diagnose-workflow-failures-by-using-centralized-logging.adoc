@@ -1,7 +1,7 @@
 :_mod-docs-content-type: ASSEMBLY
 ifdef::context[:parent-context: {context}]
 
-[id="diagnose_workflow_failures_by_using_centralized_logging_{context}"]
+[id="diagnose-workflow-failures-by-using-centralized-logging_{context}"]
 = Diagnose workflow failures by using centralized logging
 
 
