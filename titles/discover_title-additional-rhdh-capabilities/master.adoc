@@ -11,4 +11,7 @@ include::artifacts/attributes.adoc[]
 [id="{context}"]
 = {title}
 
+[role="_abstract"]
+Explore emerging, evolving, and supplemental capabilities in {product}. This content covers new features, preview technologies, and supported functionality not yet fully documented in the core documentation.
+
 include::additional-capabilities/ref-rhdh-capabilities.adoc[]
