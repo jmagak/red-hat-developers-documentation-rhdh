@@ -13,11 +13,9 @@ Route workflow traces to the observability tools your team already uses instead 
 
 .Procedure
 
-. Define your export strategy.
-+
-Choose an export strategy that matches your observability platform requirements:
+. Configure an export strategy based on your environment requirements:
 
-** OTLP exporter with batch processing (Recommended)
+** Configure the OTLP exporter with batch processing (Recommended)
 +
 For production environments, use an OTLP exporter with batch processing to reduce network overhead and improve performance:
 +
@@ -35,7 +33,7 @@ quarkus.otel.bsp.export.timeout=2s
 quarkus.otel.bsp.max.queue.size=2048
 ----
 
-** Direct export to an external platform
+** Configure direct export to an external platform
 +
 For development or simple integrations, use a direct export configuration:
 +
@@ -47,9 +45,7 @@ quarkus.otel.exporter.otlp.protocol=grpc
 quarkus.otel.traces.exporter=cdi
 ----
 
-. Externalize the configuration for production deployments.
-+
-Use environment variables to externalize your OpenTelemetry configuration. This ensures that your deployment remains secure and flexible across environments.
+. Externalize the configuration for production deployments by using environment variables. This ensures that your deployment remains secure and flexible across environments.
 +
 [source,bash]
 ----

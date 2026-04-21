@@ -1,14 +1,14 @@
 :_mod-docs-content-type: ASSEMBLY
 ifdef::context[:parent-context: {context}]
 
-[id="diagnose-workflow-failures-in-minutes-with-centralized-logging_{context}"]
-= Diagnose workflow failures in minutes with centralized logging
+[id="diagnose_workflow_failures_by_using_centralized_logging_{context}"]
+= Diagnose workflow failures by using centralized logging
 
 
-:context: diagnose-workflow-failures-in-minutes-with-centralized-logging
+:context: diagnose-workflow-failures-by-using-centralized-logging
 
 [role="_abstract"]
-Search all workflow logs from a single dashboard to diagnose failures in minutes instead of hours. Structured logging connects process instances with traces and enables automated alerts when workflows fail.
+Search all workflow logs from a single dashboard in {product} to diagnose failures quickly. Use structured logging to connect process instances with traces and set up automated alerts for workflow failures.
 
 // Enable structured JSON logging for SonataFlow workflows
 include::../modules/extend_orchestrator-in-rhdh/proc-enable-json-logging-to-search-logs-instantly-without-manual-parsing.adoc[leveloffset=+1]
@@ -20,10 +20,10 @@ include::../modules/extend_orchestrator-in-rhdh/proc-rotate-logs-automatically-t
 include::../modules/extend_orchestrator-in-rhdh/proc-link-logs-to-traces-for-complete-failure-diagnosis.adoc[leveloffset=+1]
 
 // Aggregate logs using the PLG stack
-include::../modules/extend_orchestrator-in-rhdh/proc-centralize-logs-to-eliminate-ssh-access-for-troubleshooting.adoc[leveloffset=+1]
+include::../modules/extend_orchestrator-in-rhdh/proc-centralize-logs-for-workflow-troubleshooting.adoc[leveloffset=+1]
 
 // Alerts for workflow health
-include::../modules/extend_orchestrator-in-rhdh/proc-detect-workflow-failures-before-users-report-them.adoc[leveloffset=+1]
+include::../modules/extend_orchestrator-in-rhdh/proc-monitor-workflow-health-with-automated-alerts.adoc[leveloffset=+1]
 
 // Integrate with external systems
 include::../modules/extend_orchestrator-in-rhdh/proc-route-alerts-to-existing-tools-to-reduce-response-time.adoc[leveloffset=+1]

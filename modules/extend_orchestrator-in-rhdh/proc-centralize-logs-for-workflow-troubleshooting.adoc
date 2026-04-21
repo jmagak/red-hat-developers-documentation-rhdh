@@ -1,10 +1,10 @@
 :_mod-docs-content-type: PROCEDURE
 
-[id="centralize-logs-to-eliminate-ssh-access-for-troubleshooting_{context}"]
-= Centralize logs to eliminate SSH access for troubleshooting
+[id="centralize-logs-for-workflow-troubleshooting_{context}"]
+= Centralize logs for workflow troubleshooting
 
 [role="_abstract"]
-Query logs from every workflow pod in your cluster using a single Grafana dashboard. Centralized logging means no more SSHing into individual pods—search by process ID, error type, or time range from your browser.
+Query logs from all workflow pods in your {product} cluster using a single Grafana dashboard. Centralized logging allows you to search by process ID, error type, or time range from a browser.
 
 .Prerequisites
 
@@ -16,7 +16,7 @@ Query logs from every workflow pod in your cluster using a single Grafana dashbo
 
 .Procedure
 
-. Deploy the PLG stack using Helm:
+. Deploy the PLG stack by using Helm:
 +
 [source,bash]
 ----
@@ -41,12 +41,12 @@ helm install loki-stack grafana/loki-stack \
 For production deployments, use a custom `values.yaml` file with appropriate resource limits and security contexts.
 ====
 
-. Create a ConfigMap for the Promtail sidecar. Select the configuration that matches your logging method:
+. Create a ConfigMap for the Promtail sidecar by selecting the configuration that matches your logging method:
 
 
-... Scrape Container Stdout
+... Scrape container stdout
 +
-Use this configuration to collect logs from container stdout using Kubernetes service discovery:
+Use this configuration to collect logs from container `stdout` by using Kubernetes service discovery:
 +
 [source,yaml]
 ----
@@ -207,21 +207,21 @@ spec:
 {job="sonataflow-workflows"} | json | processInstanceId="abc-123-def-456"
 ----
 
-.. Find workflow errors
+.. Find workflow errors:
 +
 [source,json,subs="+attributes,+quotes"]
 ----
 {job="sonataflow-workflows", workflow="onboarding"} | json | level="ERROR"
 ----
 
-.. Trace correlation
+.. Trace correlation:
 +
 [source,json,subs="+attributes,+quotes"]
 ----
 {job="sonataflow-workflows"} | json | traceId="4bf92f3577b34da6a3ce929d0e0e4736"
 ----
 
-.. Process instance timeline
+.. Process instance timeline:
 +
 [source,json,subs="+attributes,+quotes"]
 ----
@@ -239,4 +239,4 @@ spec:
 {job="sonataflow-workflows"} | json | processInstanceId="<instance_id>"
 ----
 +
-Expected result: Grafana displays the log entries associated with the specified process instance.
+Confirm that Grafana displays the log entries associated with the specified process instance.

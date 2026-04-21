@@ -14,7 +14,7 @@ SonataFlow workflows support structured JSON logging with automatic process inst
 
 .Prerequisites
 
-* You have deployed SonataFlow workflow using the SonataFlow Operator on {platform-generic} or Kubernetes.
+* You have deployed SonataFlow workflow by using the SonataFlow Operator on {platform-generic} or Kubernetes.
 
 * You have included the `io.quarkus:quarkus-logging-json` extension in your workflow `QUARKUS_EXTENSIONS` environment variable.
 

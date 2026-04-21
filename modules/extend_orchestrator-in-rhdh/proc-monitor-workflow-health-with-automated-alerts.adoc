@@ -1,7 +1,7 @@
 :_mod-docs-content-type: PROCEDURE
 
-[id="detect-workflow-failures-before-users-report-them_{context}"]
-= Detect workflow failures before users report them
+[id="monitor-workflow-health-with-automated-alerts_{context}"]
+= Monitor workflow health with automated alerts
 
 [role="_abstract"]
 Set up automated alerts to notify your team when workflows fail at high rates, process instances become stuck, or runtimes exceed thresholds. Proactive alerting reduces mean time to detection for production issues.
@@ -29,7 +29,7 @@ Set up automated alerts to notify your team when workflows fail at high rates, p
     summary: "High error rate in SonataFlow workflows"
 ----
 
-** To identify stuck process instances:
+** To identify stalled process instances:
 +
 [source,yaml,subs="+quotes,+attributes"]
 ----
@@ -42,7 +42,7 @@ Set up automated alerts to notify your team when workflows fail at high rates, p
     severity: critical
 ----
 
-** To identify workflows running for longer durations:
+** To identify long-running workflows:
 +
 [source,yaml,subs="+quotes,+attributes"]
 ----

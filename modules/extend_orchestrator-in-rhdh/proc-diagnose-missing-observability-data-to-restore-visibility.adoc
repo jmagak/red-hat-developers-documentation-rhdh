@@ -4,7 +4,8 @@
 = Diagnose missing observability data to restore visibility
 
 [role="_abstract"]
-Troubleshoot why logs show up as plain text, process instance IDs are empty, or traces do not appear in Jaeger. Step-by-step diagnostics quickly restore observability when workflows become invisible to monitoring.
+To restore monitoring visibility in {product}, you must identify why logs or traces are missing. Use these diagnostic steps to resolve issues with plain text logs, empty process instance IDs, or missing traces in Jaeger.
+
 
 .Prerequisites
 

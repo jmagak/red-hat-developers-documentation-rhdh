@@ -32,7 +32,7 @@ receivers:
     text: '{{ range .Alerts }}{{ .Annotations.summary }}{{ end }}'
 ----
 
-. Reload the Alertmanager configuration to apply the changes.
+. Reload the *Alertmanager* configuration to apply the changes.
 
 .Verification
 
