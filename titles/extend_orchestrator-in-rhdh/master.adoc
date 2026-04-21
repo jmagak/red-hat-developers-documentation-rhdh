@@ -32,6 +32,10 @@ include::assemblies/extend_orchestrator-in-rhdh/assembly-diagnose-workflow-failu
 
 include::assemblies/extend_orchestrator-in-rhdh/assembly-optimize-workflow-performance-by-identifying-and-eliminating-bottlenecks.adoc[leveloffset=+1]
 
+include::assemblies/extend_orchestrator-in-rhdh/assembly-deployment-manifests-for-jaeger-and-loki-observability-stack.adoc[leveloffset=+1]
+
+include::assemblies/extend_orchestrator-in-rhdh/assembly-trace-attributes-reference-for-filtering-and-querying-workflows.adoc[leveloffset=+1]
+
 include::assemblies/extend_orchestrator-in-rhdh/assembly-build-and-deploy-serverless-workflows.adoc[leveloffset=+1]
 
 include::assemblies/extend_orchestrator-in-rhdh/assembly-automate-workflow-deployment-with-orchestrator.adoc[leveloffset=+1]

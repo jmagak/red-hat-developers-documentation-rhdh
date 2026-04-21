@@ -16,12 +16,6 @@ include::../modules/extend_orchestrator-in-rhdh/proc-collect-traces-to-monitor-w
 // Connecting traces to monitoring tools
 include::../modules/extend_orchestrator-in-rhdh/proc-connect-traces-to-existing-monitoring-to-avoid-tool-sprawl.adoc[leveloffset=+1]
 
-// Deployment manifests for Jaeger and Loki observability stack
-include::assembly-deployment-manifests-for-jaeger-and-loki-observability-stack.adoc[leveloffset=+1]
-
-// Workflow telemetry data attributes
-include::assembly-trace-attributes-reference-for-filtering-and-querying-workflows.adoc[leveloffset=+1]
-
 // Troubleshooting OpenTelemetry integration
 include::../modules/extend_orchestrator-in-rhdh/ref-troubleshooting-reference-for-trace-connectivity-and-authentication-issues.adoc[leveloffset=+1]
 ifdef::parent-context[:context: {parent-context}]
