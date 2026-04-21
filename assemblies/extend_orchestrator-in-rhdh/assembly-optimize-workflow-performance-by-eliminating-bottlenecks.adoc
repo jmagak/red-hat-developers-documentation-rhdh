@@ -1,11 +1,11 @@
 :_mod-docs-content-type: ASSEMBLY
 ifdef::context[:parent-context: {context}]
 
-[id="optimize-workflow-performance-by-identifying-and-eliminating-bottlenecks_{context}"]
-= Optimize workflow performance by identifying and eliminating bottlenecks
+[id="optimize-workflow-performance-by-eliminating-bottlenecks_{context}"]
+= Optimize workflow performance by eliminating bottlenecks
 
 
-:context: optimize-workflow-performance-by-identifying-and-eliminating-bottlenecks
+:context: optimize-workflow-performance-by-eliminating-bottlenecks
 
 [role="_abstract"]
 To maintain high performance in {product}, you must identify and resolve execution delays. Use distributed tracing to visualize the execution path and workflows and determine where time is spent across service boundaries.
