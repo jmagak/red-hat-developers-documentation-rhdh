@@ -28,7 +28,7 @@
 
 `BACKSTAGE_VERSION`
 
-`RHDH_VERSION`
+`{product-very-short}_VERSION`
 
 `SEGMENT_TEST_MODE`
 
@@ -145,7 +145,7 @@
 |`oci://registry.access.redhat.com/rhdh/red-hat-developer-hub-backstage-plugin-scaffolder-backend-module-orchestrator@sha256:cbb0733c18541479edfbc76b06e9863bb08e6c4663ffec53fc1471c80bfe5db9`
 
 
-|Quickstart |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-quickstart/v/1.8.2[@red-hat-developer-hub/backstage-plugin-quickstart]` |1.8.2 
+|Quick start |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-quickstart/v/1.8.2[@red-hat-developer-hub/backstage-plugin-quickstart]` |1.8.2 
 |`./dynamic-plugins/dist/red-hat-developer-hub-backstage-plugin-quickstart`
 
 
