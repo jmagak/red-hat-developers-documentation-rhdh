@@ -9,4 +9,4 @@ HTTP headers that SonataFlow extracts and propagates to maintain trace correlati
 SonataFlow extracts and propagates the following headers to maintain observability across service boundaries:
 
 * `X-TRANSACTION-ID`: Correlates multiple workflow executions that belong to the same broader business transaction.
-* `X-TRACKER-*`: Any custom tracking context provided in these headers is sanitized and automatically converted into span attributes, for example, `sonataflow.tracker.*`, for easier querying.
+* `++X-TRACKER-*++`: Any custom tracking context provided in these headers is sanitized and automatically converted into span attributes, for example, `++sonataflow.tracker.*++`, for easier querying.
