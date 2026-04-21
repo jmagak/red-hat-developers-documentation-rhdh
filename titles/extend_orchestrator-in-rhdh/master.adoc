@@ -30,7 +30,7 @@ include::assemblies/extend_orchestrator-in-rhdh/assembly-integrate-loki-logs-to-
 
 include::assemblies/extend_orchestrator-in-rhdh/assembly-diagnose-workflow-failures-by-using-centralized-logging.adoc[leveloffset=+1]
 
-include::assemblies/extend_orchestrator-in-rhdh/assembly-optimize-workflow-performance-by-identifying-and-eliminat-bottlenecks.adoc[leveloffset=+1]
+include::assemblies/extend_orchestrator-in-rhdh/assembly-optimize-workflow-performance-by-identifying-and-eliminating-bottlenecks.adoc[leveloffset=+1]
 
 include::assemblies/extend_orchestrator-in-rhdh/assembly-build-and-deploy-serverless-workflows.adoc[leveloffset=+1]
 
