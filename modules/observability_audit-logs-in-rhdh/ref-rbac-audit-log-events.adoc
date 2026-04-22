@@ -26,7 +26,11 @@ RBAC audit logs contain a `meta` object with event-specific details:
 `source`:: The origin of the event, such as `rest`, `csv-file`, `configuration`, or `externalProviderPluginId`.
 `actionType`:: The specific operation performed: `create`, `update`, `delete`, or `create_or_update`.
 `roleEntityRef`:: The entity reference of the specific role affected by the event.
+<<<<<<< HEAD
 `members`:: A list of users or groups associated with the role for this event.
+=======
+`members`:: A list of users or groups associated with the role when the event occurs.
+>>>>>>> 1d91c2ecad (RHIDP-11676: Orchestrator - Migrate doc for Log aggregation and Open Telemetry feature (#2027))
 `decision`:: In evaluation events, indicates the policy decision: `allow` or `deny`.
 `result`:: The final outcome of a permission check, such as `AuthorizeResult`.
 
