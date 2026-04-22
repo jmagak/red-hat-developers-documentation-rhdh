@@ -2,7 +2,7 @@
 :_mod-docs-category: Discover
 
 include::artifacts/attributes.adoc[]
-:title: {explore_preview_of_emerging_and_supplemental_capabilities-book-title}
+:title: {additional-rhdh-capabilities-title}
 :context: title-additional-rhdh-capabilities
 :subtitle: Explore features that are new, evolving, or not yet fully covered in the core product documentation
 :abstract: This document brings together information on emerging, evolving, and supplemental capabilities in {product}. It includes new features, technologies, and preview features, as well as supported functionality not yet fully covered in the core documentation. Use this content to explore additional ways to extend, customize, and get more value from your {product-short} environment. As these capabilities evolve, the content may be updated to reflect ongoing improvements and feedback.
