@@ -42,9 +42,8 @@ For production deployments, use a custom `values.yaml` file with appropriate res
 ====
 
 . Create a ConfigMap for the Promtail sidecar by selecting the configuration that matches your logging method:
-
-
-... Scrape container stdout
++
+.. Scrape container stdout
 +
 Use this configuration to collect logs from container `stdout` by using Kubernetes service discovery:
 +
@@ -98,8 +97,8 @@ data:
           processInstanceId:
           traceId:
 ----
-
-... Scrape JSON log files
++
+.. Scrape JSON log files
 +
 If you use `[file-based JSON logging](#file-based-json-logging)`, configure Promtail to read from the shared log volume:
 +

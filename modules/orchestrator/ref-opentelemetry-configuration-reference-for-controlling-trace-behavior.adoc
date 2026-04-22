@@ -20,7 +20,7 @@ Configuration properties that control where traces are sent, how often they are 
 
 |`quarkus.otel.exporter.otlp.endpoint`
 |The URL of the OTLP-compatible collector.
-|`http://localhost:4317`
+|`\http://localhost:4317`
 
 |`quarkus.otel.exporter.otlp.protocol`
 |The transport protocol. Supported values are `grpc` or `http/protobuf`.
