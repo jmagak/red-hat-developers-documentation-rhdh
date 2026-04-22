@@ -11,8 +11,6 @@ include::artifacts/attributes.adoc[]
 = {title}
 
 [role="_abstract"]
-{abstract}
-
-include::artifacts/snip-developer-preview.adoc[]
+Explore emerging, evolving, and supplemental capabilities in {product}. This content covers new features, preview technologies, and supported functionality not yet fully documented in the core documentation.
 
 include::additional-capabilities/ref-rhdh-capabilities.adoc[]
