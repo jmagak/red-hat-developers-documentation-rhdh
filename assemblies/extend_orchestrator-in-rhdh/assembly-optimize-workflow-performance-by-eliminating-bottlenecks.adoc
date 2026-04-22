@@ -11,13 +11,13 @@ ifdef::context[:parent-context: {context}]
 To maintain high performance in {product}, you must identify and resolve execution delays. Use distributed tracing to visualize the execution path and workflows and determine where time is spent across service boundaries.
 
 // Enable OpenTelemetry for SonataFlow workflows
-include::../modules/orchestrator/proc-collect-traces-to-monitor-workflow-performance.adoc[leveloffset=+1]
+include::../modules/extend_orchestrator-in-rhdh/proc-collect-traces-to-monitor-workflow-performance.adoc[leveloffset=+1]
 
 // Connecting traces to monitoring tools
-include::../modules/orchestrator/proc-connect-traces-to-existing-monitoring-to-avoid-tool-sprawl.adoc[leveloffset=+1]
+include::../modules/extend_orchestrator-in-rhdh/proc-connect-traces-to-existing-monitoring-to-avoid-tool-sprawl.adoc[leveloffset=+1]
 
 // Troubleshooting OpenTelemetry integration
-include::../modules/orchestrator/ref-troubleshooting-reference-for-trace-connectivity-and-authentication-issues.adoc[leveloffset=+1]
+include::../modules/extend_orchestrator-in-rhdh/ref-troubleshooting-reference-for-trace-connectivity-and-authentication-issues.adoc[leveloffset=+1]
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]
 
