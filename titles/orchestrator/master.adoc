@@ -20,6 +20,14 @@ include::assemblies/assembly-install-rhdh-orchestrator-plugin-in-an-air-gapped-e
 
 include::assemblies/assembly-configuring-orchestrator.adoc[leveloffset=+1]
 
+include::assemblies/assembly-diagnose-workflow-failures-by-using-centralized-logging.adoc[leveloffset=+1]
+
+include::assemblies/assembly-optimize-workflow-performance-by-eliminating-bottlenecks.adoc[leveloffset=+1]
+
+include::assemblies/assembly-deployment-manifests-for-jaeger-and-loki-observability-stack.adoc[leveloffset=+1]
+
+include::assemblies/assembly-trace-attributes-reference-for-filtering-and-querying-workflows.adoc[leveloffset=+1]
+
 include::assemblies/assembly-building-and-deploying-serverless-workflows.adoc[leveloffset=+1]
 
 include::assemblies/assembly-automating-workflow-deployment-with-orchestrator.adoc[leveloffset=+1]
