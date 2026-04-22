@@ -23,7 +23,7 @@ This guide explains how to configure Argo CD to send notifications directly to t
 _This task is intended for Platform Engineers; it involves cluster-wide runtime changes_.
 ====
 
-.Overview
+Overview:
 
 The following diagram illustrates the flow from an Argo CD event in the cluster to the {product-very-short} user interface.
 ----
@@ -41,14 +41,14 @@ The following diagram illustrates the flow from an Argo CD event in the cluster 
                                               │ (with auth token)
                                               ▼
                     ┌────────────────────────────────────────────┐
-                    │              Backstage                     │
+                    │              {backstage}                     │
                     │  Endpoint: /api/notifications/notifications│
                     │  ──────────────────────────────────────────│
                     │  Shows notifications to users in the UI    │
                     └────────────────────────────────────────────┘
 ----
 
-.Prerequisites
+Prerequisites:
 
 Before you begin, make sure you have the following:
 
@@ -58,7 +58,7 @@ Before you begin, make sure you have the following:
 
 ---
 
-.Part 1: Enable the notifications plugin in {product-very-short}
+Part 1: Enable the notifications plugin in {product-very-short}:
 
 *Environment*: {product-very-short} Configuration.
 
@@ -98,7 +98,7 @@ backend:
 
 ---
 
-.Part 2: Argo CD configuration
+Part 2: Argo CD configuration:
 
 *Environment*: OpenShift Cluster (executing `oc` commands).
 
@@ -413,7 +413,7 @@ kubectl apply -f argocd-notifications-cm.yaml
 
 ---
 
-.Part 3: Enable notifications for your application
+Part 3: Enable notifications for your application:
 
 *Environment*: OpenShift Cluster (Argo CD Application manifests).
 
@@ -453,7 +453,8 @@ spec:
 
 ---
 
-.Example: Complete Setup Flow
+Example: Complete Setup Flow:
+
 **Scenario**
 
 You have a service called `order-service` managed by Argo CD, and you want the team to receive {backstage} notifications on sync events.
@@ -512,8 +513,8 @@ spec:
 
 1. **Developer pushes code** → Argo CD detects change and syncs.
 2. **Sync succeeds** → Argo CD notifications controller fires `on-deployed-backstage` trigger.
-3. **Webhook sent** → POST to Backstage `/api/notifications/notifications`.
-4. **Notification appears** → Team sees "🚀 order-service - Deployed" in Backstage with a link to Argo CD.
+3. **Webhook sent** → POST to {backstage} `/api/notifications/notifications`.
+4. **Notification appears** → Team sees "🚀 order-service - Deployed" in {backstage} with a link to Argo CD.
 
 ---
 
@@ -613,7 +614,7 @@ data:
 
 If you see `401 Unauthorized` or token errors:
 
-1. Verify the token in `argocd-notifications-secret` matches your Backstage config.
+1. Verify the token in `argocd-notifications-secret` matches your {backstage} config.
 2. Check the Authorization header format: `Bearer $backstage-token`.
 3. Restart the notifications controller after secret changes:
 +
@@ -627,8 +628,8 @@ kubectl rollout restart deployment -n openshift-gitops -l app.kubernetes.io/name
 === Security Considerations
 
 1. **Use strong tokens** - Generate random tokens with sufficient entropy.
-2. **Rotate tokens periodically** - Update both Argo CD secret and Backstage config.
-3. **Use HTTPS** - Ensure Backstage is accessible over HTTPS in production.
+2. **Rotate tokens periodically** - Update both Argo CD secret and {backstage} config.
+3. **Use HTTPS** - Ensure {backstage} is accessible over HTTPS in production.
 4. **Network policies** - Consider restricting which pods can reach {backstage}.
 
 ---
