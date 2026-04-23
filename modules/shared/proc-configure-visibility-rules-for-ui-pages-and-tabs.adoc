@@ -1,7 +1,7 @@
 :_mod-docs-content-type: PROCEDURE
 
-[id="set-up-permission-based-visibility-for-pages-and-tabs_{context}"]
-= Set up permission-based visibility for pages and tabs
+[id="configure-visibility-rules-for-ui-pages-and-tabs_{context}"]
+= Configure visibility rules for UI pages and tabs
 
 [role="_abstract"]
 You can configure UI visibility for pages, entity tabs, navigation items, and cards by using the `if` predicate in extension blueprints to control which UI elements are visible based on user permissions.

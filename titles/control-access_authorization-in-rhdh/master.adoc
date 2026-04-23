@@ -34,11 +34,7 @@ include::assemblies/shared/assembly-delegate-role-based-access-controls-rbac-acc
 
 include::assemblies/shared/assembly-permission-policies-reference.adoc[leveloffset=+1]
 
-include::modules/shared/con-control-ui-visibility-with-permissions-to-create-a-cleaner-interface.adoc[leveloffset=+1]
-
-include::modules/shared/proc-set-up-permission-based-visibility-for-pages-and-tabs.adoc[leveloffset=+2]
-
-include::modules/shared/ref-available-permissions-for-controlling-ui-visibility.adoc[leveloffset=+2]
+include::assemblies/shared/assembly-permission-based-ui-visibility-for-cleaner-user-interfaces.adoc[leveloffset=+1]
 
 include::modules/shared/con-conditional-policies-in-rhdh.adoc[leveloffset=+1]
 
