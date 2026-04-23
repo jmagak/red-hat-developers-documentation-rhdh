@@ -29,7 +29,7 @@ on:
     - release-2.**
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.number || github.event.pull_request.head.ref }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.event.pull_request.head.ref }}
   cancel-in-progress: true
 
 env:
@@ -130,9 +130,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: pr-content/.lycheecache
-          key: lychee-${{ github.event.number }}-${{ github.sha }}
+          key: lychee-${{ github.event.pull_request.number }}-${{ github.sha }}
           restore-keys: |
-            lychee-${{ github.event.number }}-
+            lychee-${{ github.event.pull_request.number }}-
             lychee-
 
       - name: Build guides and indexes
@@ -161,9 +161,9 @@ jobs:
           git fetch base ${{ github.event.pull_request.base.ref }}
           # Orchestrator runs ccutil + lychee + CQA; older branches fall back to ccutil only
           if [[ -f "build/scripts/build-orchestrator.js" ]]; then
-            node build/scripts/build-orchestrator.js -b "pr-${{ github.event.number }}"
+            node build/scripts/build-orchestrator.js -b "pr-${{ github.event.pull_request.number }}"
           else
-            build/scripts/build-ccutil.sh -b "pr-${{ github.event.number }}"
+            build/scripts/build-ccutil.sh -b "pr-${{ github.event.pull_request.number }}"
           fi
 
       # Determine if HTML was generated, so deploy runs even when only CQA/lychee fail.
@@ -199,7 +199,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.RHDH_BOT_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-        run: bash trusted-scripts/build/scripts/deploy-gh-pages.sh ./pr-content/titles-generated --message "Deploy PR ${{ github.event.number }} preview"
+        run: bash trusted-scripts/build/scripts/deploy-gh-pages.sh ./pr-content/titles-generated --message "Deploy PR ${{ github.event.pull_request.number }} preview"
 
       # Post one consolidated PR comment with build results, preview link, and CQA checklist.
       # Preview link is always shown; marked stale when title build failed (HTML not generated).
