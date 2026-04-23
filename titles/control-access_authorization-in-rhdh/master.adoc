@@ -36,6 +36,8 @@ include::assemblies/shared/assembly-permission-policies-reference.adoc[leveloffs
 
 include::assemblies/shared/assembly-permission-based-ui-visibility-for-cleaner-user-interfaces.adoc[leveloffset=+1]
 
+include::assemblies/shared/assembly-permissions-for-ui-visibility-control.adoc[leveloffset=+1]
+
 include::modules/shared/con-conditional-policies-in-rhdh.adoc[leveloffset=+1]
 
 include::modules/shared/proc-enable-transitive-parent-groups.adoc[leveloffset=+2]
