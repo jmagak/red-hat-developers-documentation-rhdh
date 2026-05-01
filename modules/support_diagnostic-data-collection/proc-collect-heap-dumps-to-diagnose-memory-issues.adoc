@@ -1,0 +1,227 @@
+:_mod-docs-content-type: PROCEDURE
+
+[id="collect-heap-dumps-to-diagnose-memory-issues_{context}"]
+= Collect heap dumps to diagnose memory issues
+
+[role="_abstract"]
+When troubleshooting memory leaks or out-of-memory errors, you can collect Node.js heap dumps alongside diagnostic data to enable detailed memory analysis and accelerate root cause identification.
+
+.Prerequisites
+
+* Understanding of basic must-gather collection on your platform
+* {product-very-short} backend containers configured with the `NODE_OPTIONS` environment variable for heap dump support
+* Sufficient storage for heap dump files (heap dumps can be several hundred megabytes each)
+* Cluster administrator access to modify deployment configurations
+* Node.js version 12.0.0 or later (included in all {product} 1.10+ container images)
+
+.Procedure
+
+. Verify whether your backend containers are already configured for heap dump support:
++
+--
+For Operator-based deployments:
+[source,terminal]
+----
+$ oc get backstage <backstage-cr-name> -n <namespace> -o jsonpath='{.spec.application.extraEnvs[?(@.name=="NODE_OPTIONS")].value}'
+----
+
+For Helm-based deployments:
+[source,terminal]
+----
+$ kubectl get deployment -n <namespace> <deployment-name> -o jsonpath='{.spec.template.spec.containers[*].env[?(@.name=="NODE_OPTIONS")].value}'
+----
+
+If `NODE_OPTIONS` includes `--heapsnapshot-signal=SIGUSR2`, heap dump support is already enabled.
+If not, proceed to configure it.
+--
+
+. Configure the Node.js backend to accept heap dump signals:
++
+--
+For Operator-based deployments, add the `NODE_OPTIONS` environment variable to your {product-custom-resource-type} custom resource:
+[source,yaml,subs="+attributes,+quotes"]
+----
+apiVersion: rhdh.redhat.com/v1alpha1
+kind: {product-custom-resource-type}
+metadata:
+  name: my-rhdh
+spec:
+  application:
+    extraEnvs:
+      - name: NODE_OPTIONS
+        value: "--heapsnapshot-signal=SIGUSR2 --diagnostic-dir=/tmp"
+----
+
+Apply the updated custom resource:
+[source,terminal]
+----
+$ oc apply -f backstage-cr.yaml
+----
+
+For Helm-based deployments, add the environment variable to your Helm values file:
+[source,yaml]
+----
+upstream:
+  backstage:
+    extraEnvVars:
+      - name: NODE_OPTIONS
+        value: "--heapsnapshot-signal=SIGUSR2 --diagnostic-dir=/tmp"
+----
+
+Update the Helm release:
+[source,terminal]
+----
+$ helm upgrade my-rhdh redhat-developer-hub/backstage -f values.yaml -n <namespace>
+----
+--
+
+. Wait for the backend pods to restart with the new configuration:
++
+[source,terminal]
+----
+$ oc get pods -n <namespace> -w  # On OpenShift
+$ kubectl get pods -n <namespace> -w  # On Kubernetes
+----
+
+. Verify the heap dump environment variable is applied:
++
+--
+For Operator-based deployments:
+[source,terminal]
+----
+$ oc get pods -n <namespace> -l app.kubernetes.io/component=backstage -o jsonpath='{.items[0].spec.containers[*].env[?(@.name=="NODE_OPTIONS")].value}'
+----
+
+For Helm-based deployments:
+[source,terminal]
+----
+$ kubectl get pods -n <namespace> -l app.kubernetes.io/name=backstage -o jsonpath='{.items[0].spec.containers[*].env[?(@.name=="NODE_OPTIONS")].value}'
+----
+--
+
+. Configure heap dump collection timeout if needed.
+Heap dump generation can take time, especially for backends with large memory footprints.
+The default timeout is 600 seconds (10 minutes):
++
+--
+On {ocp-short} (you cannot easily set environment variables with `oc adm must-gather`, so use default timeout):
+[source,terminal]
+----
+$ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:latest -- /usr/bin/gather --with-heap-dumps
+----
+
+On Kubernetes (using Helm values file):
+[source,yaml]
+----
+mustGather:
+  includeHeapDumps: true
+  env:
+    - name: HEAP_DUMP_TIMEOUT
+      value: "900"  # seconds, increase if needed
+----
+--
+
+. Enable heap dump collection:
++
+--
+On {ocp-short}:
+[source,terminal]
+----
+$ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:latest -- /usr/bin/gather --with-heap-dumps
+----
+
+On Kubernetes (using Helm values file):
+[source,yaml]
+----
+mustGather:
+  includeHeapDumps: true
+----
+--
+
+. Optional: Combine heap dump collection with other configuration options:
++
+--
+On {ocp-short} (collect heap dumps from specific namespaces):
+[source,terminal]
+----
+$ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:latest -- /usr/bin/gather --with-heap-dumps --namespaces rhdh-prod
+----
+
+On Kubernetes (using Helm values file):
+[source,yaml]
+----
+mustGather:
+  namespaces: "rhdh-prod"
+  includeHeapDumps: true
+  excludeCollectors:
+    - operator
+----
+--
+
+. Monitor collection progress.
+Heap dump collection takes longer than basic collection, typically 5-15 minutes depending on the number of backend pods and their memory size.
+The must-gather tool sends a `SIGUSR2` signal to each Node.js backend process, waits for the heap snapshot to be generated, and collects the resulting files from the pod filesystem.
+
+.Verification
+
+. Locate heap dump files in the output directory:
++
+[source,terminal]
+----
+$ find must-gather.local.<timestamp> -name "*.heapsnapshot"  # On OpenShift
+$ find must-gather-output -name "*.heapsnapshot"             # On Kubernetes
+----
++
+You should see at least one `.heapsnapshot` file for each {product-very-short} backend pod that was running during collection.
+
+. Check the size of the heap dump files:
++
+[source,terminal]
+----
+$ find must-gather.local.<timestamp> -name "*.heapsnapshot" -exec ls -lh {} \;  # On OpenShift
+$ find must-gather-output -name "*.heapsnapshot" -exec ls -lh {} \;             # On Kubernetes
+----
++
+Heap dumps are typically 50-500 MB each, depending on the backend memory usage.
+
+. Verify the total output size before uploading to a support case:
++
+[source,terminal]
+----
+$ du -sh must-gather.local.<timestamp>  # On OpenShift
+$ du -sh must-gather-output             # On Kubernetes
+----
++
+Heap dumps can significantly increase the total output size.
+Ensure you have sufficient storage and network capacity to upload the archive to your support case.
+
+.Troubleshooting
+
+If heap dumps are not generated::
+Verify that backend containers are configured with the `NODE_OPTIONS` environment variable including `--heapsnapshot-signal=SIGUSR2`.
+Check the must-gather pod logs for errors related to signal delivery or snapshot generation:
++
+[source,terminal]
+----
+$ oc logs -n openshift-must-gather-<hash> <must-gather-pod>  # On OpenShift
+$ kubectl logs -n rhdh-diagnostics <must-gather-pod>         # On Kubernetes
+----
+
+If collection times out during heap dump generation::
+Increase the `HEAP_DUMP_TIMEOUT` environment variable.
+Large backend memory footprints (multiple gigabytes) can take 10-15 minutes to snapshot.
+On {ocp-short}, you may need to modify the must-gather image or use the Kubernetes Helm chart approach to set custom timeouts.
+
+If heap dump files are empty or corrupted::
+Verify the Node.js version supports the `--heapsnapshot-signal` flag (Node.js 12+ required).
+Check backend pod logs for errors during snapshot generation.
+
+If signal delivery fails::
+Verify that the must-gather service account has permissions to send signals to pods.
+The default must-gather `RBAC` should include this, but some cluster security policies may block it.
+
+.Additional resources
+
+* xref:filter-data-scope-to-reduce-collection-time_{context}[Configure diagnostic data collection scope]
+* xref:configuration-options-for-diagnostic-collection_{context}[{product-very-short} must-gather configuration options]
+* link:https://nodejs.org/docs/latest/api/cli.html#--heapsnapshot-signalsignal[Node.js heap snapshot documentation]

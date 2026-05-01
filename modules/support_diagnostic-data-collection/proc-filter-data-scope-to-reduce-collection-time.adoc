@@ -1,0 +1,220 @@
+:_mod-docs-content-type: PROCEDURE
+
+[id="filter-data-scope-to-reduce-collection-time_{context}"]
+= Filter data scope to reduce collection time
+
+[role="_abstract"]
+To reduce collection time and focus on relevant troubleshooting data, you can customize diagnostic collection scope by filtering namespaces, excluding deployment-method-specific collectors, and enabling optional data when needed.
+
+.Prerequisites
+
+* Understanding of your {product-very-short} deployment architecture
+* Knowledge of which namespaces contain {product-very-short} resources
+* Familiarity with your deployment method (Helm or Operator)
+* Basic understanding of must-gather collection on your platform ({ocp-short} or Kubernetes)
+
+.Procedure
+
+. Identify your deployment method to find which collectors are relevant.
+If you deployed {product-very-short} using Helm, the Operator collector is not relevant.
+If you deployed using the Operator, the Helm collector is not relevant.
+
+. Find whether you use Orchestrator functionality.
+If your deployment does not include the Orchestrator plugin or workflow capabilities, you can exclude the Orchestrator collector.
+
+. Filter collection to specific namespaces in multi-namespace deployments:
++
+--
+On {ocp-short}:
+[source,terminal]
+----
+$ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:latest -- /usr/bin/gather --namespaces namespace1,namespace2,namespace3
+----
+
+On Kubernetes (using Helm values file):
+[source,yaml]
+----
+mustGather:
+  namespaces: "namespace1,namespace2,namespace3"
+----
+
+Replace `namespace1,namespace2,namespace3` with the comma-separated list of namespaces containing your {product-very-short} resources.
+--
+
+. Exclude collectors not relevant to your deployment:
++
+--
+For Helm-based deployments, exclude the Operator collector:
+
+On {ocp-short}:
+[source,terminal]
+----
+$ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:latest -- /usr/bin/gather --without-operator
+----
+
+On Kubernetes (using Helm values file):
+[source,yaml]
+----
+mustGather:
+  excludeCollectors:
+    - operator
+----
+
+For Operator-based deployments, exclude the Helm collector:
+
+On {ocp-short}:
+[source,terminal]
+----
+$ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:latest -- /usr/bin/gather --without-helm
+----
+
+On Kubernetes (using Helm values file):
+[source,yaml]
+----
+mustGather:
+  excludeCollectors:
+    - helm
+----
+
+To exclude the Orchestrator collector:
+
+On {ocp-short}:
+[source,terminal]
+----
+$ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:latest -- /usr/bin/gather --without-orchestrator
+----
+
+On Kubernetes (using Helm values file):
+[source,yaml]
+----
+mustGather:
+  excludeCollectors:
+    - orchestrator
+----
+
+You can combine many exclusions:
+
+On {ocp-short}:
+[source,terminal]
+----
+$ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:latest -- /usr/bin/gather --without-operator --without-orchestrator
+----
+
+On Kubernetes (using Helm values file):
+[source,yaml]
+----
+mustGather:
+  excludeCollectors:
+    - operator
+    - orchestrator
+----
+--
+
+. Optional: Include cluster-wide information when troubleshooting issues that might involve cluster-level configurations:
++
+--
+On {ocp-short}:
+[source,terminal]
+----
+$ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:latest -- /usr/bin/gather --cluster-info
+----
+
+On Kubernetes (using Helm values file):
+[source,yaml]
+----
+mustGather:
+  includeClusterInfo: true
+----
+
+The cluster-info collector gathers additional cluster state beyond basic platform metadata.
+This increases collection time and output size, so only enable it when you need cluster-level diagnostics.
+--
+
+. Optional: Configure timeouts for long-running operations in large deployments.
+The default timeouts are typically enough, but you can adjust them if needed:
++
+--
+On {ocp-short} (using environment variables in the must-gather pod spec):
+[source,terminal]
+----
+$ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:latest -- /usr/bin/gather
+----
+
+On Kubernetes (using Helm values file):
+[source,yaml]
+----
+mustGather:
+  env:
+    - name: COMMAND_TIMEOUT
+      value: "60000"  # milliseconds
+----
+
+The `COMMAND_TIMEOUT` environment variable controls how long collectors wait for commands to complete.
+The default varies by collector.
+--
+
+. Optional: Set log verbosity for detailed diagnostic output during collection:
++
+--
+On Kubernetes (using Helm values file):
+[source,yaml]
+----
+mustGather:
+  env:
+    - name: LOG_LEVEL
+      value: "DEBUG"
+----
+
+Valid values are `DEBUG`, `INFO`, `WARN`, and `ERROR`.
+The default is `INFO`.
+Use `DEBUG` when troubleshooting must-gather collection issues.
+--
+
+. Combine configuration options for focused collection.
+Example for a Helm-based deployment in specific namespaces with cluster info:
++
+--
+On {ocp-short}:
+[source,terminal]
+----
+$ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:latest -- /usr/bin/gather --namespaces rhdh-prod,rhdh-plugins --without-operator --cluster-info
+----
+
+On Kubernetes (using Helm values file):
+[source,yaml]
+----
+mustGather:
+  namespaces: "rhdh-prod,rhdh-plugins"
+  excludeCollectors:
+    - operator
+  includeClusterInfo: true
+----
+--
+
+.Verification
+
+After collection completes, verify that the output has only the expected data:
+
+. Check which collector directories are present in the output:
++
+[source,terminal]
+----
+$ ls must-gather.local.<timestamp>/  # On OpenShift
+$ ls must-gather-output/             # On Kubernetes
+----
+
+. Verify that excluded collectors are not present.
+For example, if you excluded the Operator collector, there should be no `operator/` directory.
+
+. If you filtered by namespaces, verify that only the specified namespaces appear in the `namespaces/` directory:
++
+[source,terminal]
+----
+$ ls must-gather.local.<timestamp>/namespaces/  # On OpenShift
+$ ls must-gather-output/namespaces/             # On Kubernetes
+----
+
+.Additional resources
+
+* xref:configuration-options-for-diagnostic-collection_{context}[{product-very-short} must-gather configuration options]
+* xref:platform-compatibility-and-supported-configurations_{context}[Platform compatibility and supported configurations]

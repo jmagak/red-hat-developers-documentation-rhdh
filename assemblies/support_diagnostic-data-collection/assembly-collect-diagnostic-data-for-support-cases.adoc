@@ -1,0 +1,42 @@
+:_mod-docs-content-type: ASSEMBLY
+ifdef::context[:parent-context: {context}]
+
+
+[id="collect-diagnostic-data-for-support-cases_{context}"]
+= Collect diagnostic data for support cases
+
+:context: collect-diagnostic-data-for-support-cases
+
+
+[role="_abstract"]
+When troubleshooting {product} issues or preparing a support case, you can collect comprehensive diagnostic data in a single operation to reduce resolution time and provide complete information to {company-name} support teams.
+
+include::../modules/support_diagnostic-data-collection/con-diagnostic-data-collection-for-support-cases.adoc[leveloffset=+1]
+
+include::../modules/support_diagnostic-data-collection/con-diagnostic-data-types-and-collection-scope.adoc[leveloffset=+1]
+
+include::../modules/support_diagnostic-data-collection/proc-collect-diagnostic-data-for-openshift-support-cases.adoc[leveloffset=+1]
+
+include::../modules/support_diagnostic-data-collection/proc-collect-diagnostic-data-for-kubernetes-support-cases.adoc[leveloffset=+1]
+
+include::../modules/support_diagnostic-data-collection/proc-filter-data-scope-to-reduce-collection-time.adoc[leveloffset=+1]
+
+include::../modules/support_diagnostic-data-collection/proc-include-redacted-secrets-in-diagnostic-collection.adoc[leveloffset=+1]
+
+include::../modules/support_diagnostic-data-collection/proc-collect-heap-dumps-to-diagnose-memory-issues.adoc[leveloffset=+1]
+
+include::../modules/support_diagnostic-data-collection/ref-configuration-options-for-diagnostic-collection.adoc[leveloffset=+1]
+
+include::../modules/support_diagnostic-data-collection/ref-diagnostic-data-output-structure-and-organization.adoc[leveloffset=+1]
+
+include::../modules/support_diagnostic-data-collection/ref-platform-compatibility-and-supported-configurations.adoc[leveloffset=+1]
+
+[role="_additional-resources"]
+[id="additional-resources_{context}"]
+== Additional resources
+
+* xref:rhdh-support_{context}[{product-very-short} support scope and resources]
+* link:https://github.com/redhat-developer/rhdh-must-gather[{product-very-short} must-gather repository]
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]

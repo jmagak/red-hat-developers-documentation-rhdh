@@ -1,0 +1,221 @@
+:_mod-docs-content-type: REFERENCE
+
+[id="configuration-options-for-diagnostic-collection_{context}"]
+= Configuration options for diagnostic collection
+
+[role="_abstract"]
+To optimize collection efficiency and reduce data volume, you can configure namespace scope, exclude deployment-method-specific collectors, enable optional data, and adjust timeouts using command-line flags, environment variables, or Helm chart values.
+
+== Command-line flags
+
+The following table lists command-line flags available when running the must-gather gather script.
+On {ocp-short}, pass these flags after `-- /usr/bin/gather`.
+On Kubernetes, configure equivalent options using Helm chart values.
+
+.Command-line flags for must-gather collection
+[cols="1,2,1,2", options="header"]
+|===
+|Flag
+|Description
+|Default
+|Example
+
+|`--namespaces`
+|Comma-separated list of namespaces to collect data from. Filters collection to specific namespaces.
+|All namespaces
+|`--namespaces rhdh-prod,rhdh-plugins`
+
+|`--cluster-info`
+|Include cluster-wide state information beyond basic platform metadata.
+|Not included
+|`--cluster-info`
+
+|`--with-secrets`
+|Include Kubernetes secrets with automatic sanitization of sensitive values.
+|Secrets excluded
+|`--with-secrets`
+
+|`--with-heap-dumps`
+|Trigger Node.js heap snapshots and collect heap dump files for memory analysis.
+|Heap dumps not collected
+|`--with-heap-dumps`
+
+|`--without-operator`
+|Exclude the Operator collector. Use for Helm-based deployments.
+|Operator collector included
+|`--without-operator`
+
+|`--without-helm`
+|Exclude the Helm collector. Use for Operator-based deployments.
+|Helm collector included
+|`--without-helm`
+
+|`--without-orchestrator`
+|Exclude the Orchestrator collector. Use when not using workflow functionality.
+|Orchestrator collector included
+|`--without-orchestrator`
+
+|`--without-platform`
+|Exclude the platform collector.
+|Platform collector included
+|`--without-platform`
+
+|`--without-route`
+|Exclude the route collector (OpenShift routes).
+|Route collector included
+|`--without-route`
+
+|`--without-ingress`
+|Exclude the ingress collector (Kubernetes ingress resources).
+|Ingress collector included
+|`--without-ingress`
+
+|`--without-namespace-inspect`
+|Exclude cross-namespace resource discovery.
+|Namespace-inspect collector included
+|`--without-namespace-inspect`
+|===
+
+== Environment variables
+
+The following table lists environment variables that control must-gather operational behavior.
+
+.Environment variables for must-gather collection
+[cols="1,2,1,2", options="header"]
+|===
+|Variable
+|Description
+|Default
+|Example
+
+|`LOG_LEVEL`
+|Logging verbosity level. Valid values: `DEBUG`, `INFO`, `WARN`, `ERROR`.
+|`INFO`
+|`LOG_LEVEL=DEBUG`
+
+|`COMMAND_TIMEOUT`
+|Timeout in milliseconds for individual command execution during collection.
+|Varies by collector
+|`COMMAND_TIMEOUT=60000`
+
+|`HEAP_DUMP_TIMEOUT`
+|Timeout in *seconds* for heap dump generation per pod.
+|`600` (10 minutes)
+|`HEAP_DUMP_TIMEOUT=900`
+|===
+
+== Helm chart values
+
+When deploying must-gather on Kubernetes platforms using the Helm chart, configure collection options using a values file.
+The following table shows the Helm values structure and their equivalent command-line flags.
+
+.Helm chart configuration values
+[cols="1,2,2", options="header"]
+|===
+|Helm Value Path
+|Description
+|Equivalent Command-line Flag
+
+|`mustGather.namespaces`
+|Comma-separated string of namespaces to collect from.
+|`--namespaces`
+
+|`mustGather.includeClusterInfo`
+|Boolean to include cluster-wide state information.
+|`--cluster-info`
+
+|`mustGather.includeSecrets`
+|Boolean to include sanitized secrets in collection.
+|`--with-secrets`
+
+|`mustGather.includeHeapDumps`
+|Boolean to collect heap dumps from Node.js backend pods.
+|`--with-heap-dumps`
+
+|`mustGather.excludeCollectors`
+|Array of collector names to exclude. Valid values: `operator`, `helm`, `orchestrator`, `platform`, `route`, `ingress`, `namespace-inspect`.
+|`--without-<collector>`
+
+|`mustGather.env`
+|Array of environment variables to set in the must-gather pod. Each item has `name` and `value` fields.
+|N/A (environment variables)
+|===
+
+.Example Helm values file
+[source,yaml]
+----
+mustGather:
+  namespaces: "rhdh-prod,rhdh-plugins"
+  includeClusterInfo: true
+  includeSecrets: false
+  includeHeapDumps: false
+  excludeCollectors:
+    - operator
+    - orchestrator
+  env:
+    - name: LOG_LEVEL
+      value: "DEBUG"
+    - name: COMMAND_TIMEOUT
+      value: "60000"
+    - name: HEAP_DUMP_TIMEOUT
+      value: "900"
+----
+
+== Platform-specific configuration
+
+On {ocp-short}::
+Configure must-gather using command-line flags passed to the gather script.
+Environment variables cannot easily be set with `oc adm must-gather`, so use default values or the Kubernetes Helm approach if custom environment variables are required.
++
+.Example OpenShift command with multiple flags
+[source,terminal]
+----
+$ oc adm must-gather \
+  --image=quay.io/rhdh-community/rhdh-must-gather:latest \
+  -- /usr/bin/gather \
+  --namespaces rhdh-prod,rhdh-plugins \
+  --without-operator \
+  --cluster-info
+----
+
+On Kubernetes::
+Configure must-gather using a Helm values file.
+Create a YAML file with your configuration and reference it during Helm installation.
++
+.Example Kubernetes installation with values file
+[source,terminal]
+----
+$ helm install my-rhdh-must-gather \
+  redhat-developer-hub/redhat-developer-hub-must-gather \
+  --namespace rhdh-diagnostics \
+  --create-namespace \
+  -f must-gather-values.yaml
+----
+
+== Version compatibility
+
+The {product-very-short} must-gather tool version should match your {product-very-short} deployment version for optimal compatibility.
+
+.Version compatibility matrix
+[cols="1,1,2", options="header"]
+|===
+|{product} Version
+|must-gather Image Version
+|Supported Platforms
+
+|1.10.0
+|`1.10.0`
+|{ocp-short} {ocp-version-min}+, {aks-short}, {eks-short}, {gke-short}
+
+|`latest`
+|`latest`
+|Latest {product-very-short} release, all supported platforms
+|===
+
+Use the `latest` tag for the most recent must-gather features and fixes.
+Use a specific version tag when you need collection output that matches a specific {product-very-short} release for support case analysis.
+
+.Additional resources
+
+* xref:filter-data-scope-to-reduce-collection-time_{context}[Configure diagnostic data collection scope]
+* xref:platform-compatibility-and-supported-configurations_{context}[Platform compatibility and supported configurations]

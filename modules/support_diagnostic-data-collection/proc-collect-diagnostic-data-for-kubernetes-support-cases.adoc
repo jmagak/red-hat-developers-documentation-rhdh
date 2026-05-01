@@ -1,0 +1,140 @@
+:_mod-docs-content-type: PROCEDURE
+
+[id="collect-diagnostic-data-for-kubernetes-support-cases_{context}"]
+= Collect diagnostic data for Kubernetes support cases
+
+[role="_abstract"]
+To reduce troubleshooting time and ensure complete diagnostic information for support cases, you can deploy a Helm chart that collects diagnostic data from {aks-brand-name} ({aks-short}), {eks-brand-name} ({eks-short}), or {gke-brand-name} ({gke-short}) deployments in a single operation.
+
+.Prerequisites
+
+* Kubernetes cluster running on {aks-short}, {eks-short}, or {gke-short}
+* `kubectl` CLI authenticated to your cluster
+* `helm` CLI version 3 or later installed
+* Cluster administrator access or appropriate `RBAC` permissions for resource inspection
+* The {product-very-short} deployment you want to collect diagnostics from is accessible
+
+.Procedure
+
+. Install the must-gather Helm chart:
++
+[source,terminal]
+----
+$ helm install my-rhdh-must-gather redhat-developer-hub-must-gather \
+  --repo https://redhat-developer.github.io/rhdh-chart \
+  --namespace rhdh-diagnostics \
+  --create-namespace
+----
++
+The command creates a namespace for diagnostic collection and deploys a Deployment resource that runs the must-gather collection.
+
+. Optional: Configure collection scope using Helm values.
+Create a values file to customize what data is collected:
++
+[source,yaml]
+----
+mustGather:
+  namespaces: "rhdh-app,rhdh-plugins"  # Comma-separated list
+  excludeCollectors:
+    - operator  # Exclude for Helm-based deployments
+    - orchestrator  # Exclude if not using Orchestrator
+  includeClusterInfo: true  # Include cluster-wide state
+----
++
+Install with the values file:
++
+[source,terminal]
+----
+$ helm install my-rhdh-must-gather redhat-developer-hub-must-gather \
+  --repo https://redhat-developer.github.io/rhdh-chart \
+  --namespace rhdh-diagnostics \
+  --create-namespace \
+  -f values.yaml
+----
+
+. Wait for the must-gather pod to be ready:
++
+[source,terminal]
+----
+$ kubectl wait --for=condition=ready pod \
+  -l app.kubernetes.io/instance=my-rhdh-must-gather,app.kubernetes.io/component=gather \
+  --timeout=3600s -n rhdh-diagnostics
+----
++
+Collection typically completes within 2-5 minutes, depending on the number of resources and optional collectors enabled.
+
+. Extract the collected diagnostic data from the pod:
++
+[source,terminal]
+----
+$ kubectl exec deploy/my-rhdh-must-gather -c data-holder -n rhdh-diagnostics -- tar czf - -C /must-gather . > rhdh-must-gather-output.tar.gz
+----
++
+This command streams the diagnostic data archive directly to your local filesystem.
+
+. Clean up the must-gather resources:
++
+[source,terminal]
+----
+$ helm uninstall my-rhdh-must-gather -n rhdh-diagnostics
+$ kubectl delete namespace rhdh-diagnostics
+----
+
+.Verification
+
+. Extract the archive:
++
+[source,terminal]
+----
+$ tar -xzf rhdh-must-gather-output.tar.gz
+----
+
+. Verify the output directory structure:
++
+[source,terminal]
+----
+$ ls must-gather/
+----
++
+You should see directories corresponding to the collectors that ran, such as `helm/`, `namespaces/`, and platform-specific directories.
+
+. Check that resource files and logs were collected:
++
+[source,terminal]
+----
+$ find must-gather -name "*.log" | head -5
+$ find must-gather -name "*.yaml" | head -5
+----
+
+.Troubleshooting
+
+If the job fails to complete::
+Check the job status and pod logs for error messages:
++
+[source,terminal]
+----
+$ kubectl describe job -n rhdh-diagnostics
+$ kubectl logs -n rhdh-diagnostics <pod_name>
+----
+
+If permission errors occur during collection::
+Verify the service account used by the must-gather job has appropriate `RBAC` permissions.
+The Helm chart creates necessary role bindings, but some cluster configurations might require additional permissions.
+
+If the job times out::
+The default job timeout is typically enough for most deployments.
+If you have a large number of namespaces or resources, configure the Helm values to filter collection to specific namespaces.
+
+If Helm repository access fails::
+Ensure network connectivity to `https://redhat-developer.github.io/rhdh-chart`.
+In disconnected environments, mirror the chart following the disconnected environment guidance in xref:platform-compatibility-and-supported-configurations_{context}[].
+
+.Next steps
+
+* Review the collected output before attaching to a support case
+* Attach the archive `rhdh-must-gather-output.tar.gz` to your {company-name} support case
+
+.Additional resources
+
+* link:https://github.com/redhat-developer/rhdh-must-gather[{product-very-short} must-gather repository]
+* link:https://github.com/redhat-developer/rhdh-chart[{product-very-short} Helm chart repository]

@@ -1,0 +1,108 @@
+:_mod-docs-content-type: PROCEDURE
+
+[id="collect-diagnostic-data-for-openshift-support-cases_{context}"]
+= Collect diagnostic data for OpenShift support cases
+
+[role="_abstract"]
+To reduce troubleshooting time and ensure complete diagnostic information for support cases, you can use the {openshift-cli} `oc adm must-gather` command to collect {product} deployment data in a single operation.
+
+.Prerequisites
+
+* {ocp-short} {ocp-version-min} or later
+* {openshift-cli} installed and authenticated to your cluster
+* Cluster administrator access or appropriate `RBAC` permissions for resource inspection
+* The {product-very-short} deployment you want to collect diagnostics from is accessible
+
+.Procedure
+
+. Run the must-gather collection command:
++
+[source,terminal]
+----
+$ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:latest
+----
++
+The command creates a collection pod, gathers diagnostic data, and saves the output to a timestamped directory.
+
+. Optional: Specify an image version that matches your {product-very-short} deployment for compatibility:
++
+[source,terminal]
+----
+$ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:1.10.0
+----
+
+. Optional: Filter collection to specific namespaces if your {product-very-short} deployment spans many namespaces:
++
+[source,terminal]
+----
+$ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:latest -- /usr/bin/gather --namespaces rhdh-operator,rhdh-app
+----
++
+Replace `rhdh-operator,rhdh-app` with the comma-separated list of namespaces containing your {product-very-short} resources.
+
+. Optional: Exclude collectors not relevant to your deployment method to reduce collection time:
++
+[source,terminal]
+----
+$ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:latest -- /usr/bin/gather --without-helm
+----
++
+Use `--without-operator` for Helm-based deployments, `--without-helm` for Operator-based deployments, or `--without-orchestrator` if not using Orchestrator functionality.
+
+. Optional: Include cluster-wide information for troubleshooting cluster-level issues:
++
+[source,terminal]
+----
+$ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:latest -- /usr/bin/gather --cluster-info
+----
+
+. Monitor the collection progress.
+The command displays status messages as it gathers data from different collectors.
+Collection typically completes within 2-5 minutes, depending on the number of resources and optional collectors enabled.
+
+.Verification
+
+. Locate the output directory.
+The command saves diagnostic data to `./must-gather.local.<timestamp>` in your current working directory.
+
+. Verify the expected directory structure:
++
+[source,terminal]
+----
+$ ls must-gather.local.<timestamp>
+----
++
+You should see directories corresponding to the collectors that ran, such as `helm/`, `operator/`, and `namespaces/`.
+
+. Check that resource files and logs were collected:
++
+[source,terminal]
+----
+$ find must-gather.local.<timestamp> -name "*.log" | head -5
+$ find must-gather.local.<timestamp> -name "*.yaml" | head -5
+----
+
+.Troubleshooting
+
+If the collection fails with permission errors::
+Verify you have cluster administrator access or the required `RBAC` permissions to read cluster resources, pod logs, and namespace information.
+
+If the collection times out::
+The default timeout is typically enough for most deployments.
+If you have a large number of namespaces or resources, consider filtering to specific namespaces by using the `--namespaces` flag.
+
+If specific collectors fail::
+Check the must-gather output for error messages.
+Some collectors depend on specific resources being present.
+For example, the Operator collector requires {product-custom-resource-type} custom resources, which are only present in Operator-based deployments.
+
+.Next steps
+
+* Review the collected output before attaching to a support case
+* Archive the output directory for upload: `tar -czf must-gather-output.tar.gz must-gather.local.<timestamp>`
+* Attach the archive to your {company-name} support case
+
+.Additional resources
+
+* link:https://github.com/redhat-developer/rhdh-must-gather[{product-very-short} must-gather repository]
+* link:https://docs.redhat.com/en/documentation/openshift_container_platform/4.5/html/support/gathering-cluster-data[Gathering cluster data in {ocp-short}]

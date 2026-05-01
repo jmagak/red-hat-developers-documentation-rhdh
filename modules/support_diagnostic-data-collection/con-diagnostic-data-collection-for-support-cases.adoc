@@ -1,0 +1,26 @@
+:_mod-docs-content-type: CONCEPT
+
+[id="diagnostic-data-collection-for-support-cases_{context}"]
+= Diagnostic data collection for support cases
+
+[role="_abstract"]
+When troubleshooting {product} deployment issues or preparing a support case, you can collect comprehensive diagnostic data in a single operation to reduce investigation time and ensure complete information for support teams.
+
+The {product-very-short} must-gather tool is a specialized diagnostic data collection utility designed for {product} deployments on {ocp-brand-name} ({ocp-short}) and supported Kubernetes platforms including {aks-brand-name} ({aks-short}), {eks-brand-name} ({eks-short}), and {gke-brand-name} ({gke-short}).
+Unlike generic must-gather tools, the {product-very-short} must-gather tool includes collectors specifically tailored for {product-very-short} components, such as Helm release data, Operator custom resources, Orchestrator workflows, and {backstage} configurations.
+
+The tool integrates with the {ocp-short} must-gather framework on {ocp-short} clusters, enabling familiar workflows for platform administrators.
+On Kubernetes platforms, it deploys as a Helm chart that runs a collection job and packages the results for download.
+Both methods offer the same comprehensive data collection capabilities, ensuring consistent diagnostic information regardless of platform.
+
+You can use the {product-very-short} must-gather tool in several scenarios:
+
+* When preparing to open a support case with {company-name} Global Support Services
+* When troubleshooting production incidents that require detailed diagnostic information
+* When conducting proactive health checks and configuration validation
+* When debugging deployment issues in development or staging environments
+
+The container image is available from `quay.io/rhdh-community/rhdh-must-gather`.
+Use an image version that matches your {product-very-short} deployment version to ensure compatibility with your deployment method and platform.
+
+include::../../artifacts/snip-technology-preview.adoc[]

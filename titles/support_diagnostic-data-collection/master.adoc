@@ -1,0 +1,17 @@
+:_mod-docs-content-type: ASSEMBLY
+:_mod-docs-category: Support
+
+include::artifacts/attributes.adoc[]
+
+:context: diagnostic-data-collection
+:title: {diagnostic-data-collection-book-title}
+:subtitle: Prepare comprehensive diagnostic information for support case resolution
+:abstract: Collect diagnostic data from {product} deployments on {ocp-short} and Kubernetes platforms to accelerate troubleshooting and provide complete information for support cases.
+
+[id="{context}"]
+= {title}
+
+[role="_abstract"]
+{abstract}
+
+include::assemblies/support_diagnostic-data-collection/assembly-collect-diagnostic-data-for-support-cases.adoc[leveloffset=+1]
