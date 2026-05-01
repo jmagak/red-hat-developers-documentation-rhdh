@@ -233,10 +233,3 @@ Authentication to the {eks-short} cluster uses `kubectl` with {aws-short} creden
 Implementation is identical to {aks-short}.
 The Helm chart creates a Job that runs must-gather collection.
 Authentication to the {gke-short} cluster uses `kubectl` with GCP credentials.
-
-.Additional resources
-
-* xref:collect-diagnostic-data-for-openshift-support-cases_{context}[Collect diagnostic data on OpenShift]
-* xref:collect-diagnostic-data-for-kubernetes-support-cases_{context}[Collect diagnostic data on Kubernetes]
-* xref:filter-data-scope-to-reduce-collection-time_{context}[Configure diagnostic data collection scope]
-* link:https://github.com/redhat-developer/rhdh-must-gather[{product-very-short} must-gather repository]

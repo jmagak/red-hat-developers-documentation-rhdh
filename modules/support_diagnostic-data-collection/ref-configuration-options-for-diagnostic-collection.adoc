@@ -214,8 +214,3 @@ The {product-very-short} must-gather tool version should match your {product-ver
 
 Use the `latest` tag for the most recent must-gather features and fixes.
 Use a specific version tag when you need collection output that matches a specific {product-very-short} release for support case analysis.
-
-.Additional resources
-
-* xref:filter-data-scope-to-reduce-collection-time_{context}[Configure diagnostic data collection scope]
-* xref:platform-compatibility-and-supported-configurations_{context}[Platform compatibility and supported configurations]

@@ -213,8 +213,3 @@ For example, if you excluded the Operator collector, there should be no `operato
 $ ls must-gather.local.<timestamp>/namespaces/  # On OpenShift
 $ ls must-gather-output/namespaces/             # On Kubernetes
 ----
-
-.Additional resources
-
-* xref:configuration-options-for-diagnostic-collection_{context}[{product-very-short} must-gather configuration options]
-* xref:platform-compatibility-and-supported-configurations_{context}[Platform compatibility and supported configurations]

@@ -101,8 +101,3 @@ For example, the Operator collector requires {product-custom-resource-type} cust
 * Review the collected output before attaching to a support case
 * Archive the output directory for upload: `tar -czf must-gather-output.tar.gz must-gather.local.<timestamp>`
 * Attach the archive to your {company-name} support case
-
-.Additional resources
-
-* link:https://github.com/redhat-developer/rhdh-must-gather[{product-very-short} must-gather repository]
-* link:https://docs.redhat.com/en/documentation/openshift_container_platform/4.5/html/support/gathering-cluster-data[Gathering cluster data in {ocp-short}]

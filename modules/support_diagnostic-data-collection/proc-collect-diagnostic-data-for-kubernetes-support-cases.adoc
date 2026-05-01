@@ -133,8 +133,3 @@ In disconnected environments, mirror the chart following the disconnected enviro
 
 * Review the collected output before attaching to a support case
 * Attach the archive `rhdh-must-gather-output.tar.gz` to your {company-name} support case
-
-.Additional resources
-
-* link:https://github.com/redhat-developer/rhdh-must-gather[{product-very-short} must-gather repository]
-* link:https://github.com/redhat-developer/rhdh-chart[{product-very-short} Helm chart repository]

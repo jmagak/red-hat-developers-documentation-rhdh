@@ -219,9 +219,3 @@ Check backend pod logs for errors during snapshot generation.
 If signal delivery fails::
 Verify that the must-gather service account has permissions to send signals to pods.
 The default must-gather `RBAC` should include this, but some cluster security policies may block it.
-
-.Additional resources
-
-* xref:filter-data-scope-to-reduce-collection-time_{context}[Configure diagnostic data collection scope]
-* xref:configuration-options-for-diagnostic-collection_{context}[{product-very-short} must-gather configuration options]
-* link:https://nodejs.org/docs/latest/api/cli.html#--heapsnapshot-signalsignal[Node.js heap snapshot documentation]

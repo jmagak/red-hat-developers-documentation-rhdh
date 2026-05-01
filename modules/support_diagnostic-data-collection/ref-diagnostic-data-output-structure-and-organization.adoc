@@ -297,4 +297,3 @@ The following table shows where to find frequently needed diagnostic information
 .Additional resources
 
 * link:https://github.com/redhat-developer/rhdh-must-gather/blob/main/docs/omc.md[Using OMC with {product-very-short} must-gather output]
-* link:https://github.com/gmeghnag/omc[OpenShift Must-Gather Client repository]
