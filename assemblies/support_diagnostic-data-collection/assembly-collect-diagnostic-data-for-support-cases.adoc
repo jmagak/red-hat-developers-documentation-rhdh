@@ -37,7 +37,6 @@ include::../modules/support_diagnostic-data-collection/ref-platform-compatibilit
 [id="additional-resources_{context}"]
 == Additional resources
 
-* xref:rhdh-support_{context}[{product-very-short} support scope and resources]
 * link:https://github.com/redhat-developer/rhdh-must-gather[{product-very-short} must-gather repository]
 
 ifdef::parent-context[:context: {parent-context}]
