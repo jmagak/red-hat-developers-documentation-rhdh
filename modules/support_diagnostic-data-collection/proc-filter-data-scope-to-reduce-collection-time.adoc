@@ -8,10 +8,10 @@ To reduce collection time and focus on relevant troubleshooting data, you can cu
 
 .Prerequisites
 
-* Understanding of your {product-very-short} deployment architecture
-* Knowledge of which namespaces contain {product-very-short} resources
-* Familiarity with your deployment method (Helm or Operator)
-* Basic understanding of must-gather collection on your platform ({ocp-short} or Kubernetes)
+* Understanding of your {product-very-short} deployment architecture.
+* Knowledge of which namespaces contain {product-very-short} resources.
+* Familiarity with your deployment method (Helm or Operator).
+* Basic understanding of `must-gather` collection on your platform ({ocp-short} or Kubernetes).
 
 .Procedure
 
@@ -127,7 +127,7 @@ mustGather:
 ----
 
 The cluster-info collector gathers additional cluster state beyond basic platform metadata.
-This increases collection time and output size, so only enable it when you need cluster-level diagnostics.
+This increases collection time and output size, so enable it only when you need cluster-level diagnostics.
 --
 
 . Optional: Configure timeouts for long-running operations in large deployments.
@@ -167,7 +167,7 @@ mustGather:
 
 Valid values are `DEBUG`, `INFO`, `WARN`, and `ERROR`.
 The default is `INFO`.
-Use `DEBUG` when troubleshooting must-gather collection issues.
+Use `DEBUG` when troubleshooting `must-gather` collection issues.
 --
 
 . Combine configuration options for focused collection.
@@ -195,7 +195,7 @@ mustGather:
 
 After collection completes, verify that the output has only the expected data:
 
-. Check which collector directories are present in the output:
+. Check which collector directories exist in the output:
 +
 [source,terminal]
 ----
@@ -203,8 +203,8 @@ $ ls must-gather.local.<timestamp>/  # On OpenShift
 $ ls must-gather-output/             # On Kubernetes
 ----
 
-. Verify that excluded collectors are not present.
-For example, if you excluded the Operator collector, there should be no `operator/` directory.
+. Verify the output does not include excluded collectors.
+For example, if you excluded the Operator collector, the output should have no `operator/` directory.
 
 . If you filtered by namespaces, verify that only the specified namespaces appear in the `namespaces/` directory:
 +

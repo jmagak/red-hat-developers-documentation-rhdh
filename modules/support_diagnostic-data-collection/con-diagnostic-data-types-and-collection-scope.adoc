@@ -4,66 +4,66 @@
 = Diagnostic data types and collection scope
 
 [role="_abstract"]
-To minimize security risk and configure appropriate collection scope for your environment, review what diagnostic data is gathered by default and what additional data you can include when needed for specific troubleshooting scenarios.
+To minimize security risk and configure appropriate collection scope for your environment, review what diagnostic data the tool gathers by default and what additional data you can include for specific troubleshooting scenarios.
 
 The {product-very-short} must-gather tool organizes data collection into default-enabled collectors and opt-in collectors.
 
 == Default-enabled collectors
 
-The following collectors run by default and can be excluded using `--without-<collector>` flags to focus collection on relevant data for your deployment:
+The following collectors run by default and you can exclude them using `--without-<collector>` flags to focus collection on relevant data for your deployment:
 
 Platform collector::
-Collects cluster-level information including cluster version, node details, storage classes, and platform detection metadata.
+This collector collects cluster-level information including cluster version, node details, storage classes, and platform detection metadata.
 This collector identifies whether the deployment is running on {ocp-short}, {aks-short}, {eks-short}, or {gke-short}, which helps support engineers understand platform-specific behaviors.
 
 Helm collector::
-Gathers Helm release information for {product-very-short} deployments installed using the Helm chart.
+This collector gathers Helm release information for {product-very-short} deployments installed using the Helm chart.
 This includes Helm release metadata, deployed values, and generated manifests.
 If your deployment uses the {product-very-short} Operator instead of Helm, you can exclude this collector to focus on relevant data.
 
 Operator collector::
-Collects Operator-specific data including operator logs, custom resource definitions (`CRDs`), and {product-custom-resource-type} custom resources.
+This collector collects Operator-specific data including operator logs, custom resource definitions (`CRDs`), and {product-custom-resource-type} custom resources.
 This collector is essential for troubleshooting Operator-based deployments.
 If your deployment uses Helm installation instead of the Operator, you can exclude this collector.
 
 Orchestrator collector::
-Gathers workflow execution data, {rhoserverless-brand-name} resources, and Knative state for deployments by using the Orchestrator plugin.
+This collector gathers workflow execution data, {rhoserverless-brand-name} resources, and Knative state for deployments by using the Orchestrator plugin.
 This collector is useful when troubleshooting workflow-related issues.
 If your deployment does not use Orchestrator functionality, you can exclude this collector to reduce collection time and output size.
 
 Application data collector::
-Collects pod logs, deployment configurations, service definitions, `ConfigMaps`, and persistent volume claims for {product-very-short} application components.
-This is core diagnostic information used in nearly all troubleshooting scenarios.
+This collector collects pod logs, deployment configurations, service definitions, `ConfigMaps`, and persistent volume claims for {product-very-short} application components.
+This core diagnostic information helps in nearly all troubleshooting scenarios.
 
 Route and Ingress collector::
-Gathers route definitions on {ocp-short} and ingress configurations on Kubernetes platforms.
+This collector gathers route definitions on {ocp-short} and ingress configurations on Kubernetes platforms.
 This information is essential for troubleshooting external access issues and connectivity problems.
 
 Namespace-inspect collector::
-Performs cross-namespace resource discovery to identify {product-very-short} components distributed across many namespaces.
+This collector performs cross-namespace resource discovery to identify {product-very-short} components distributed across many namespaces.
 This is particularly useful in complex deployments where {product-very-short} resources span several namespaces.
 You can exclude this collector if you know all resources are in a single namespace.
 
 == Opt-in collectors
 
-The following collectors are not enabled by default and must be explicitly enabled when needed:
+The following collectors do not run by default and you must explicitly enable them when needed:
 
 Cluster-info collector::
-Collects cluster-wide state information beyond the basic platform metadata.
+This collector collects cluster-wide state information beyond the basic platform metadata.
 Enable this collector when troubleshooting issues that might involve cluster-level configurations or resource constraints.
-This collector increases collection time and output size, so only enable it when cluster-level diagnostics are needed.
+This collector increases collection time and output size, so enable it only when cluster-level diagnostics are needed.
 
 Secrets collector::
-Includes Kubernetes secrets in the diagnostic output with automatic redaction of sensitive values.
+This collector includes Kubernetes secrets in the diagnostic output with automatic redaction of sensitive values.
 The tool redacts passwords, tokens, API keys, and other sensitive data while preserving the structure and keys for configuration troubleshooting.
-A redaction report is generated showing which fields were redacted.
-Only enable secrets collection when troubleshooting configuration issues that require seeing secret structure, and always review the output before sharing with support.
+The tool generates a redaction report showing which fields it redacted.
+Enable secrets collection only when troubleshooting configuration issues that require seeing secret structure, and always review the output before sharing with support.
 
 Heap dumps collector::
-Triggers memory snapshots from Node.js backend processes and collects the resulting heap dump files.
+This collector triggers memory snapshots from Node.js backend processes and collects the resulting heap dump files.
 Heap dumps are large binary files that support engineers analyze to diagnose memory leaks, performance degradation, or out-of-memory errors.
-This collector requires that backend containers are configured with the `NODE_OPTIONS` environment variable including `--heapsnapshot-signal=SIGUSR2`.
-Only enable this collector when troubleshooting memory-related issues, as heap dump files can be several hundred megabytes each.
+This collector requires that you configure backend containers with the `NODE_OPTIONS` environment variable including `--heapsnapshot-signal=SIGUSR2`.
+Enable this collector only when troubleshooting memory-related issues, as heap dump files can be several hundred megabytes each.
 
-You can configure collection scope by excluding collectors not relevant to your deployment method, filtering by specific namespaces, and enabling optional collectors only when needed.
+You can configure collection scope by excluding collectors not relevant to your deployment method, filtering by specific namespaces, and enabling optional collectors only when you need them.
 This customization reduces collection time, minimizes output size, and focuses diagnostic data on the areas relevant to your troubleshooting scenario.

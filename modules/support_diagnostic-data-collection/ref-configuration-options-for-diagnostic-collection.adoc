@@ -4,15 +4,14 @@
 = Configuration options for diagnostic collection
 
 [role="_abstract"]
-To optimize collection efficiency and reduce data volume, you can configure namespace scope, exclude deployment-method-specific collectors, enable optional data, and adjust timeouts using command-line flags, environment variables, or Helm chart values.
+To optimize collection efficiency and reduce data volume, you can configure namespace scope, exclude deployment-method-specific collectors, enable optional data, and adjust timeouts by using command-line flags, environment variables, or Helm chart values.
 
 == Command-line flags
 
-The following table lists command-line flags available when running the must-gather gather script.
+The following table lists command-line flags available when running the `must-gather` gather script.
 On {ocp-short}, pass these flags after `-- /usr/bin/gather`.
-On Kubernetes, configure equivalent options using Helm chart values.
+On Kubernetes, configure equivalent options by using Helm chart values.
 
-.Command-line flags for must-gather collection
 [cols="1,2,1,2", options="header"]
 |===
 |Flag
@@ -80,7 +79,6 @@ On Kubernetes, configure equivalent options using Helm chart values.
 
 The following table lists environment variables that control must-gather operational behavior.
 
-.Environment variables for must-gather collection
 [cols="1,2,1,2", options="header"]
 |===
 |Variable
@@ -106,10 +104,9 @@ The following table lists environment variables that control must-gather operati
 
 == Helm chart values
 
-When deploying must-gather on Kubernetes platforms using the Helm chart, configure collection options using a values file.
+When deploying must-gather on Kubernetes platforms by using the Helm chart, configure collection options by using a values file.
 The following table shows the Helm values structure and their equivalent command-line flags.
 
-.Helm chart configuration values
 [cols="1,2,2", options="header"]
 |===
 |Helm Value Path
@@ -137,11 +134,12 @@ The following table shows the Helm values structure and their equivalent command
 |`--without-<collector>`
 
 |`mustGather.env`
-|Array of environment variables to set in the must-gather pod. Each item has `name` and `value` fields.
+|Array of environment variables to set in the `must-gather` pod. Each item has `name` and `value` fields.
 |N/A (environment variables)
 |===
 
-.Example Helm values file
+The following example shows a Helm values file configuration:
+
 [source,yaml]
 ----
 mustGather:
@@ -167,7 +165,8 @@ On {ocp-short}::
 Configure must-gather using command-line flags passed to the gather script.
 Environment variables cannot easily be set with `oc adm must-gather`, so use default values or the Kubernetes Helm approach if custom environment variables are required.
 +
-.Example OpenShift command with multiple flags
+The following example shows an OpenShift command with multiple flags:
++
 [source,terminal]
 ----
 $ oc adm must-gather \
@@ -182,7 +181,8 @@ On Kubernetes::
 Configure must-gather using a Helm values file.
 Create a YAML file with your configuration and reference it during Helm installation.
 +
-.Example Kubernetes installation with values file
+The following example shows a Kubernetes installation with a values file:
++
 [source,terminal]
 ----
 $ helm install my-rhdh-must-gather \
@@ -195,8 +195,8 @@ $ helm install my-rhdh-must-gather \
 == Version compatibility
 
 The {product-very-short} must-gather tool version should match your {product-very-short} deployment version for optimal compatibility.
+The following table shows the version compatibility matrix:
 
-.Version compatibility matrix
 [cols="1,1,2", options="header"]
 |===
 |{product} Version

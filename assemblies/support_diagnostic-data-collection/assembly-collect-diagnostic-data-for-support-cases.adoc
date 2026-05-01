@@ -9,7 +9,7 @@ ifdef::context[:parent-context: {context}]
 
 
 [role="_abstract"]
-When troubleshooting {product} issues or preparing a support case, you can collect comprehensive diagnostic data in a single operation to reduce resolution time and provide complete information to {company-name} support teams.
+When troubleshooting {product} issues or preparing a support case, you can collect comprehensive diagnostic data in one operation to reduce resolution time and provide complete information to {company-name} support teams.
 
 include::../modules/support_diagnostic-data-collection/con-diagnostic-data-collection-for-support-cases.adoc[leveloffset=+1]
 

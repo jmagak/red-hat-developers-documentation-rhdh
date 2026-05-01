@@ -4,13 +4,13 @@
 = Platform compatibility and supported configurations
 
 [role="_abstract"]
-To ensure compatibility and avoid collection failures, you can verify platform support and determine the correct collection method by reviewing requirements, deployment coverage, and version compatibility for {ocp-short}, {aks-short}, {eks-short}, and {gke-short}.
+To ensure compatibility and avoid collection failures, verify platform support and determine the correct collection method by reviewing requirements, deployment coverage, and version compatibility for {ocp-short}, {aks-short}, {eks-short}, and {gke-short}.
 
 == Supported platforms
 
-The {product-very-short} must-gather tool works on the following Kubernetes platforms where {product-very-short} is supported.
+The {product-very-short} must-gather tool is compatible with the following Kubernetes platforms where {product-very-short} is supported.
+The supported platforms and installation methods:
 
-.Supported platforms and installation methods
 [cols="1,1,2,2", options="header"]
 |===
 |Platform
@@ -21,7 +21,7 @@ The {product-very-short} must-gather tool works on the following Kubernetes plat
 |{ocp-brand-name}
 |{ocp-version-min}
 |`oc adm must-gather`
-|Integrates with OpenShift must-gather framework. Supports both Operator and Helm deployments.
+|Integrates with OpenShift `must-gather` framework. Supports both Operator and Helm deployments.
 
 |{aks-brand-name}
 |Kubernetes {kubernetes-version}+
@@ -42,9 +42,8 @@ The {product-very-short} must-gather tool works on the following Kubernetes plat
 == Deployment method coverage
 
 The {product-very-short} must-gather tool includes collectors for both Helm-based and Operator-based {product-very-short} deployments.
-The following table shows which collectors are relevant for each deployment method.
+The following table shows which collectors are relevant for each deployment method:
 
-.Collector coverage by deployment method
 [cols="1,1,1,2", options="header"]
 |===
 |Collector
@@ -55,60 +54,60 @@ The following table shows which collectors are relevant for each deployment meth
 |Platform
 |Yes
 |Yes
-|Collects cluster version, nodes, storage classes
+|Collects cluster version, nodes, storage classes.
 
 |Helm
 |Yes
 |No
-|Exclude with `--without-helm` for Operator deployments
+|Exclude with `--without-helm` for Operator deployments.
 
 |Operator
 |No
 |Yes
-|Exclude with `--without-operator` for Helm deployments
+|Exclude with `--without-operator` for Helm deployments.
 
 |Orchestrator
 |Yes
 |Yes
-|Exclude with `--without-orchestrator` if not using workflows
+|Exclude with `--without-orchestrator` if not using workflows.
 
 |Application data
 |Yes
 |Yes
-|Core diagnostic data for all deployments
+|Core diagnostic data for all deployments.
 
-|Route/Ingress
+|Route or Ingress
 |Yes
 |Yes
-|Routes on {ocp-short}, Ingress on Kubernetes platforms
+|Routes on {ocp-short}, Ingress on Kubernetes platforms.
 
 |Namespace-inspect
 |Yes
 |Yes
-|Cross-namespace resource discovery
+|Cross-namespace resource discovery.
 
 |Cluster-info
 |Optional
 |Optional
-|Enable with `--cluster-info` when needed
+|Enable with `--cluster-info` when needed.
 
 |Secrets
 |Optional
 |Optional
-|Enable with `--with-secrets` for configuration troubleshooting
+|Enable with `--with-secrets` for configuration troubleshooting.
 
 |Heap dumps
 |Optional
 |Optional
-|Enable with `--with-heap-dumps` for memory analysis
+|Enable with `--with-heap-dumps` for memory analysis.
 |===
 
 For best results, exclude collectors not relevant to your deployment method.
-For example, Helm-based deployments should exclude the Operator collector, and Operator-based deployments should exclude the Helm collector.
+For example, Helm-based deployments excludes the Operator collector, and Operator-based deployments excludes the Helm collector.
 
 == {product} version compatibility
 
-The {product-very-short} must-gather tool version should match your {product-very-short} deployment version for compatibility with deployment methods, resource schemas, and platform features.
+The {product-very-short} must-gather tool version matches the {product-very-short} deployment version for compatibility with deployment methods, resource schemas, and platform features.
 
 .{product} version alignment
 [cols="1,1,2", options="header"]
@@ -132,20 +131,21 @@ The {product-very-short} must-gather tool version should match your {product-ver
 
 Backward compatibility considerations:
 
-* Must-gather images can collect data from older {product-very-short} deployments, but may not recognize newer resource types or features.
-* For best results, use a must-gather image version that matches or is slightly newer than your {product-very-short} deployment.
-* If your deployment spans multiple {product-very-short} versions (for example, multiple namespaces with different versions), use the must-gather image version that matches the highest {product-very-short} version.
+* Must-gather images can collect data from older {product-very-short} deployments, but might not process newer resource types or features.
+* For best results, use a `must-gather` image version that matches or is slightly newer than the {product-very-short} deployment.
+* If your deployment spans multiple {product-very-short} versions (for example, several namespaces with different versions), use the `must-gather` image version that matches the highest {product-very-short} version.
 
 == Disconnected and air-gapped environment support
 
 The {product-very-short} must-gather tool supports disconnected environments with image mirroring.
 
 Disconnected environment requirements:
-* Mirror the must-gather image to your internal container registry
-* Configure must-gather to use the mirrored image location
-* Ensure network connectivity from the cluster to the internal registry
+* Mirror the `must-gather` image to the internal container registry.
+* Configure must-gather to use the mirrored image location.
+* Ensure network connectivity from the cluster to the internal registry.
 
-.Mirroring the must-gather image
+To mirror the `must-gather` image, run the following commands:
+
 [source,terminal]
 ----
 $ podman pull quay.io/rhdh-community/rhdh-must-gather:1.10.0
@@ -153,13 +153,15 @@ $ podman tag quay.io/rhdh-community/rhdh-must-gather:1.10.0 internal-registry.ex
 $ podman push internal-registry.example.com/rhdh/must-gather:1.10.0
 ----
 
-.Using the mirrored image on OpenShift
+To use the mirrored image on OpenShift, run:
+
 [source,terminal]
 ----
 $ oc adm must-gather --image=internal-registry.example.com/rhdh/must-gather:1.10.0
 ----
 
-.Using the mirrored image on Kubernetes (Helm values)
+To use the mirrored image on Kubernetes, configure the following Helm values:
+
 [source,yaml]
 ----
 image:
@@ -169,35 +171,35 @@ image:
 
 Data transfer considerations for disconnected environments:
 
-* Collected diagnostic data must be transferred from the disconnected environment to a system with internet access for support case upload
-* Output directory size varies based on collection scope (see xref:diagnostic-data-output-structure-and-organization_{context}[])
-* Heap dumps significantly increase output size (500 MB - 2 GB total)
-* Test collection scope in a non-production environment to estimate output size before production use
+* You must transfer collected diagnostic data from the disconnected environment to a system with internet access for support case upload.
+* Output directory size varies based on collection scope.
+* Heap dumps significantly increase output size (500 MB - 2 GB total).
+* Test collection scope in a non-production environment to estimate output size before production use.
 
 == Required RBAC permissions
 
 The {product-very-short} must-gather tool requires elevated permissions to read cluster resources, pod logs, and namespace information.
 
 Minimum required permissions:
-* Read access to pods, deployments, services, configmaps in target namespaces
-* Read access to pod logs
-* Read access to custom resources ({product-custom-resource-type} CRs for Operator deployments, Helm releases for Helm deployments)
-* Read access to routes ({ocp-short}) or ingress resources (Kubernetes)
-* Read access to secrets (only when using `--with-secrets`)
-* Ability to execute commands in pods (only when using `--with-heap-dumps` to send signals)
+* Read access to pods, deployments, services, configmaps in target namespaces.
+* Read access to pod logs.
+* Read access to custom resources ({product-custom-resource-type} CRs for Operator deployments, Helm releases for Helm deployments).
+* Read access to routes ({ocp-short}) or ingress resources (Kubernetes).
+* Read access to secrets (only when using `--with-secrets`).
+* Ability to execute commands in pods (only when using `--with-heap-dumps` to send signals).
 
 On {ocp-short}, the `oc adm must-gather` command typically runs with cluster-admin privileges, which include all necessary permissions.
 
-On Kubernetes platforms, the must-gather Helm chart creates a service account with appropriate role bindings.
-If your cluster has restrictive security policies, you may need to create additional role bindings or use a service account with elevated permissions.
+On Kubernetes platforms, installing the must-gather Helm chart creates a service account with appropriate role bindings.
+If your cluster has restrictive security policies, you might need to create additional role bindings or use a service account with elevated permissions.
 
 == Known limitations and unsupported scenarios
 
-The following scenarios are not currently supported or have known limitations:
+The following scenarios have known limitations or lack support:
 
 Unsupported platforms::
-Kubernetes distributions other than {aks-short}, {eks-short}, {gke-short}, and {ocp-short} are not tested or officially supported.
-The tool may work on other Kubernetes distributions, but functionality is not guaranteed.
+Red Hat does not test or officially support Kubernetes distributions other than {aks-short}, {eks-short}, {gke-short}, and {ocp-short}.
+The tool might work on other Kubernetes distributions, but Red Hat does not guarantee functionality.
 
 Multi-cluster deployments::
 The must-gather tool collects data from a single cluster.
@@ -208,28 +210,28 @@ While the tool collects pod logs and configurations that include dynamic plugin 
 Plugin-specific diagnostics rely on application logs and `ConfigMap` data.
 
 Ephemeral environments::
-The must-gather tool assumes resources remain stable during collection (2-15 minutes depending on scope).
-In highly dynamic environments with frequent pod restarts, some data may be incomplete.
+The must-gather tool requires resources to remain stable during collection (2-15 minutes depending on scope).
+In highly dynamic environments with frequent pod restarts, the tool might collect incomplete data.
 
 == Platform-specific implementation notes
 
 {ocp-short}::
-The must-gather tool integrates with the OpenShift must-gather framework.
-Collection runs in a dedicated pod created by the `oc adm must-gather` command.
-The pod is automatically cleaned up after collection completes.
-Output is saved to the local filesystem in the `must-gather.local.<timestamp>` directory.
+The must-gather tool integrates with the OpenShift `must-gather` framework.
+The `oc adm must-gather` command creates a dedicated pod that runs the collection.
+OpenShift automatically cleans up the pod after collection completes.
+The tool writes output to the local file system in the `must-gather.local.<timestamp>` directory.
 
 {aks-short}::
 The must-gather tool deploys as a Kubernetes Job via Helm chart.
-Collection runs to completion, and the output must be extracted from the pod using `kubectl cp`.
-The job and pod resources are retained after completion to allow data extraction, then manually cleaned up using `helm uninstall`.
+Collection runs to completion, and you must extract the output from the pod by using `kubectl cp`.
+The job and pod resources remain after completion to allow data extraction, then you manually clean them up using `helm uninstall`.
 
 {eks-short}::
 Implementation is identical to {aks-short}.
-The Helm chart creates a Job that runs must-gather collection.
+Installing the Helm chart creates a Job that runs must-gather collection.
 Authentication to the {eks-short} cluster uses `kubectl` with {aws-short} credentials.
 
 {gke-short}::
 Implementation is identical to {aks-short}.
-The Helm chart creates a Job that runs must-gather collection.
+Installing the Helm chart creates a Job that runs must-gather collection.
 Authentication to the {gke-short} cluster uses `kubectl` with GCP credentials.

@@ -4,19 +4,20 @@
 = Collect diagnostic data for Kubernetes support cases
 
 [role="_abstract"]
-To reduce troubleshooting time and ensure complete diagnostic information for support cases, you can deploy a Helm chart that collects diagnostic data from {aks-brand-name} ({aks-short}), {eks-brand-name} ({eks-short}), or {gke-brand-name} ({gke-short}) deployments in a single operation.
+Deploy a Helm chart to collect diagnostic data from {aks-brand-name} ({aks-short}), {eks-brand-name} ({eks-short}), or {gke-brand-name} ({gke-short}) deployments in one operation.
+This reduces troubleshooting time and ensures complete diagnostic information for support cases.
 
 .Prerequisites
 
-* Kubernetes cluster running on {aks-short}, {eks-short}, or {gke-short}
-* `kubectl` CLI authenticated to your cluster
-* `helm` CLI version 3 or later installed
-* Cluster administrator access or appropriate `RBAC` permissions for resource inspection
-* The {product-very-short} deployment you want to collect diagnostics from is accessible
+* Kubernetes cluster running on {aks-short}, {eks-short}, or {gke-short}.
+* `kubectl` CLI authenticated to your cluster.
+* `helm` CLI 3 or later installed.
+* Cluster administrator access or appropriate `RBAC` permissions for resource inspection.
+* The {product-very-short} deployment you want to collect diagnostics from is accessible.
 
 .Procedure
 
-. Install the must-gather Helm chart:
+. Install the `must-gather` Helm chart:
 +
 [source,terminal]
 ----
@@ -26,10 +27,10 @@ $ helm install my-rhdh-must-gather redhat-developer-hub-must-gather \
   --create-namespace
 ----
 +
-The command creates a namespace for diagnostic collection and deploys a Deployment resource that runs the must-gather collection.
+A namespace for diagnostic collection is created and a Deployment resource starts to run the `must-gather` collection.
 
 . Optional: Configure collection scope using Helm values.
-Create a values file to customize what data is collected:
+Create a values file to customize what data the tool collects:
 +
 [source,yaml]
 ----
@@ -52,7 +53,7 @@ $ helm install my-rhdh-must-gather redhat-developer-hub-must-gather \
   -f values.yaml
 ----
 
-. Wait for the must-gather pod to be ready:
+. Wait for the `must-gather` pod to be ready:
 +
 [source,terminal]
 ----
@@ -70,9 +71,9 @@ Collection typically completes within 2-5 minutes, depending on the number of re
 $ kubectl exec deploy/my-rhdh-must-gather -c data-holder -n rhdh-diagnostics -- tar czf - -C /must-gather . > rhdh-must-gather-output.tar.gz
 ----
 +
-This command streams the diagnostic data archive directly to your local filesystem.
+This command streams the diagnostic data archive directly to your local file system.
 
-. Clean up the must-gather resources:
+. Clean up the `must-gather` resources:
 +
 [source,terminal]
 ----
@@ -96,9 +97,9 @@ $ tar -xzf rhdh-must-gather-output.tar.gz
 $ ls must-gather/
 ----
 +
-You should see directories corresponding to the collectors that ran, such as `helm/`, `namespaces/`, and platform-specific directories.
+The output includes directories corresponding to the collectors that ran, such as `helm/`, `namespaces/`, and platform-specific directories.
 
-. Check that resource files and logs were collected:
+. Verify the tool collected resource files and logs:
 +
 [source,terminal]
 ----
@@ -118,18 +119,13 @@ $ kubectl logs -n rhdh-diagnostics <pod_name>
 ----
 
 If permission errors occur during collection::
-Verify the service account used by the must-gather job has appropriate `RBAC` permissions.
-The Helm chart creates necessary role bindings, but some cluster configurations might require additional permissions.
+Verify the service account used by the `must-gather` job has appropriate `RBAC` permissions.
+Installing the chart creates necessary role bindings, but some cluster configurations might require additional permissions.
 
 If the job times out::
 The default job timeout is typically enough for most deployments.
-If you have a large number of namespaces or resources, configure the Helm values to filter collection to specific namespaces.
+If you have several namespaces or resources, configure the Helm values to filter collection to specific namespaces.
 
 If Helm repository access fails::
 Ensure network connectivity to `https://redhat-developer.github.io/rhdh-chart`.
-In disconnected environments, mirror the chart following the disconnected environment guidance in xref:platform-compatibility-and-supported-configurations_{context}[].
 
-.Next steps
-
-* Review the collected output before attaching to a support case
-* Attach the archive `rhdh-must-gather-output.tar.gz` to your {company-name} support case

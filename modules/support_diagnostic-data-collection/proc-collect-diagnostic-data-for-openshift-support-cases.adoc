@@ -4,25 +4,26 @@
 = Collect diagnostic data for OpenShift support cases
 
 [role="_abstract"]
-To reduce troubleshooting time and ensure complete diagnostic information for support cases, you can use the {openshift-cli} `oc adm must-gather` command to collect {product} deployment data in a single operation.
+To collect {product} deployment data in one operation, use the {openshift-cli} `oc adm must-gather` command.
+This reduces troubleshooting time and ensures complete diagnostic information for support cases.
 
 .Prerequisites
 
-* {ocp-short} {ocp-version-min} or later
-* {openshift-cli} installed and authenticated to your cluster
-* Cluster administrator access or appropriate `RBAC` permissions for resource inspection
-* The {product-very-short} deployment you want to collect diagnostics from is accessible
+* {ocp-short} {ocp-version-min} or later.
+* {openshift-cli} installed and authenticated to your cluster.
+* Cluster administrator access or appropriate `RBAC` permissions for resource inspection.
+* The {product-very-short} deployment you want to collect diagnostics from is accessible.
 
 .Procedure
 
-. Run the must-gather collection command:
+. Run the `must-gather` collection command:
 +
 [source,terminal]
 ----
 $ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:latest
 ----
 +
-The command creates a collection pod, gathers diagnostic data, and saves the output to a timestamped directory.
+A collection pod starts, data collection begins, and results appear in a timestamped directory.
 
 . Optional: Specify an image version that matches your {product-very-short} deployment for compatibility:
 +
@@ -57,13 +58,13 @@ $ oc adm must-gather --image=quay.io/rhdh-community/rhdh-must-gather:latest -- /
 ----
 
 . Monitor the collection progress.
-The command displays status messages as it gathers data from different collectors.
+Status messages appear as data collection progresses through different collectors.
 Collection typically completes within 2-5 minutes, depending on the number of resources and optional collectors enabled.
 
 .Verification
 
 . Locate the output directory.
-The command saves diagnostic data to `./must-gather.local.<timestamp>` in your current working directory.
+The output appears in `./must-gather.local.<timestamp>` in your current working directory.
 
 . Verify the expected directory structure:
 +
@@ -72,9 +73,9 @@ The command saves diagnostic data to `./must-gather.local.<timestamp>` in your c
 $ ls must-gather.local.<timestamp>
 ----
 +
-You should see directories corresponding to the collectors that ran, such as `helm/`, `operator/`, and `namespaces/`.
+The output includes directories corresponding to the collectors that ran, such as `helm/`, `operator/`, and `namespaces/`.
 
-. Check that resource files and logs were collected:
+. Verify the tool collected resource files and logs:
 +
 [source,terminal]
 ----
@@ -89,15 +90,9 @@ Verify you have cluster administrator access or the required `RBAC` permissions 
 
 If the collection times out::
 The default timeout is typically enough for most deployments.
-If you have a large number of namespaces or resources, consider filtering to specific namespaces by using the `--namespaces` flag.
+If you have several namespaces or resources, filter to specific namespaces by using the `--namespaces` flag.
 
 If specific collectors fail::
-Check the must-gather output for error messages.
-Some collectors depend on specific resources being present.
-For example, the Operator collector requires {product-custom-resource-type} custom resources, which are only present in Operator-based deployments.
-
-.Next steps
-
-* Review the collected output before attaching to a support case
-* Archive the output directory for upload: `tar -czf must-gather-output.tar.gz must-gather.local.<timestamp>`
-* Attach the archive to your {company-name} support case
+Check the `must-gather` output for error messages.
+Some collectors depend on specific resources existing.
+For example, the Operator collector requires {product-custom-resource-type} custom resources, which exist only in Operator-based deployments.
