@@ -13,6 +13,8 @@ When troubleshooting {product} issues or preparing a support case, you can colle
 
 include::../modules/support_diagnostic-data-collection/con-diagnostic-data-collection-for-support-cases.adoc[leveloffset=+1]
 
+include::../../artifacts/snip-technology-preview.adoc[]
+
 include::../modules/support_diagnostic-data-collection/con-diagnostic-data-types-and-collection-scope.adoc[leveloffset=+1]
 
 include::../modules/support_diagnostic-data-collection/proc-collect-diagnostic-data-for-openshift-support-cases.adoc[leveloffset=+1]

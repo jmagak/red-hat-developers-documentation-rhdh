@@ -22,5 +22,3 @@ You can use the {product-very-short} must-gather tool in several scenarios:
 
 The container image is available from `quay.io/rhdh-community/rhdh-must-gather`.
 Use an image version that matches your {product-very-short} deployment version to ensure compatibility with your deployment method and platform.
-
-include::../../artifacts/snip-technology-preview.adoc[]
