@@ -6,7 +6,7 @@
 = {company-name} {technology-preview} plugins
 
 [role="_abstract"]
-{company-name} provides {technology-preview} support for the following 19 plugins.
+{company-name} provides {technology-preview} support for the following 18 plugins.
 
 include::{docdir}/artifacts/snip-technology-preview.adoc[]
 
@@ -14,43 +14,43 @@ include::{docdir}/artifacts/snip-technology-preview.adoc[]
 |===
 |*Name* |*Plugin* |*Plugin Version* |*Path and required variables* |*Artifact Tag*
 |Events Backend Module GitHub |`https://npmjs.com/package/@backstage/plugin-events-backend-module-github/v/0.4.15[@backstage/plugin-events-backend-module-github]` |0.4.15 
-|`oci://quay.io/rhdh/backstage-plugin-events-backend-module-github@sha256:f7208cd74df274f4642b7e81b31d5e1281ec911484142a61f1eec645e5dae2b3`
+|`oci://quay.io/rhdh/backstage-plugin-events-backend-module-github@sha256:5ee36de2126f8b1c1f02488b8b7e8a3ac15121f59933ea2bc52d59e9dfee0d16`
 
 `GITHUB_WEBHOOK_SECRET`
 
 
 |2.1.0--0.4.15
-|Extensions |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-extensions/v/0.20.0[@red-hat-developer-hub/backstage-plugin-extensions]` |0.20.0 
-|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-extensions@sha256:a1eaab191deaf45b00ebfcc97cb6a428c37e31c2810cfc4c0beabdb60eeda284`
+|Extensions |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-extensions/v/1.0.2[@red-hat-developer-hub/backstage-plugin-extensions]` |1.0.2 
+|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-extensions@sha256:dc1e0fb8bf6fa7961e5ff11bf0b4a81a844ca335b4e6fc46956b8fa57516017d`
 
 
-|2.1.0--0.20.0
-|Extensions |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-catalog-backend-module-extensions/v/0.20.0[@red-hat-developer-hub/backstage-plugin-catalog-backend-module-extensions]` |0.20.0 
-|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-catalog-backend-module-extensions@sha256:0cc9ba36eaf417dd0c360c28d15d69d5ca299281544a12af69f5e8b7dae1403e`
+|2.1.0--1.0.2
+|Extensions |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-catalog-backend-module-extensions/v/1.0.2[@red-hat-developer-hub/backstage-plugin-catalog-backend-module-extensions]` |1.0.2 
+|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-catalog-backend-module-extensions@sha256:165c4751042f714389ff966c8af3318e460cd5c20012c1a21593c79e28ed8dc2`
 
 `RHDH_EXTENSIONS_DIRECTORY`
 
 
-|2.1.0--0.20.0
-|Extensions |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-extensions-backend/v/0.20.0[@red-hat-developer-hub/backstage-plugin-extensions-backend]` |0.20.0 
-|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-extensions-backend@sha256:ed40d86822a9bccb0623d7c59fbb7ec5147977b9c629cfde00aad989c577086e`
+|2.1.0--1.0.2
+|Extensions |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-extensions-backend/v/1.0.2[@red-hat-developer-hub/backstage-plugin-extensions-backend]` |1.0.2 
+|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-extensions-backend@sha256:f66a27255abac36874d2f0b01a1fb80e9444d5c22074e012f317f47df1f21b76`
 
 `RHDH_EXTENSIONS_INSTALL_EXPORT_PATH`
 
 
-|2.1.0--0.20.0
+|2.1.0--1.0.2
 |GitLab |`https://npmjs.com/package/@backstage/plugin-scaffolder-backend-module-gitlab/v/0.11.10[@backstage/plugin-scaffolder-backend-module-gitlab]` |0.11.10 
-|`oci://quay.io/rhdh/backstage-plugin-scaffolder-backend-module-gitlab@sha256:9e452045ec0551abe2f1fd600cd3d1bb0b1650be26daf7d623684e007323f083`
+|`oci://quay.io/rhdh/backstage-plugin-scaffolder-backend-module-gitlab@sha256:2e795ffd45ddfd21fa78bf83aff4421d0a61864400d767a60ecf0091d823dcae`
 
 
 |2.1.0--0.11.10
 |Notifications |`https://npmjs.com/package/@backstage/plugin-notifications/v/0.5.20[@backstage/plugin-notifications]` |0.5.20 
-|`oci://quay.io/rhdh/backstage-plugin-notifications@sha256:c692a9eab60ba6e456bde84ae749ed0669e4a7df0e4210088fceb7da07ae40ae`
+|`oci://quay.io/rhdh/backstage-plugin-notifications@sha256:1624f73ef08a41c4808c46eeec84d35779a3ee86aac9fb5deb168974011cde70`
 
 
 |2.1.0--0.5.20
 |Notifications |`https://npmjs.com/package/@backstage/plugin-notifications-backend-module-email/v/0.3.24[@backstage/plugin-notifications-backend-module-email]` |0.3.24 
-|`oci://quay.io/rhdh/backstage-plugin-notifications-backend-module-email@sha256:fd3fb12839350e0eff5c5ed0bf42a9d145d8d683555252d78d0df42f1f07cbe6`
+|`oci://quay.io/rhdh/backstage-plugin-notifications-backend-module-email@sha256:5af02b20950012600e8f0b441127f91dc86ac97edefcfd6b49bc9e4ecb2c2324`
 
 `EMAIL_HOSTNAME`
 
@@ -63,79 +63,64 @@ include::{docdir}/artifacts/snip-technology-preview.adoc[]
 
 |2.1.0--0.3.24
 |Notifications |`https://npmjs.com/package/@backstage/plugin-notifications-backend/v/0.6.8[@backstage/plugin-notifications-backend]` |0.6.8 
-|`oci://quay.io/rhdh/backstage-plugin-notifications-backend@sha256:f45573d459b7c0dd1bbf8af3c9d80ab1f2f6f102bb59bed277c910458169af04`
+|`oci://quay.io/rhdh/backstage-plugin-notifications-backend@sha256:76ac6d260a75cd0b0690798e623b95e9943af7ed57b8355a04a641014bdf995e`
 
 
 |2.1.0--0.6.8
-|Pingidentity |`https://npmjs.com/package/@backstage-community/plugin-catalog-backend-module-pingidentity/v/0.15.0[@backstage-community/plugin-catalog-backend-module-pingidentity]` |0.15.0 
-|`oci://quay.io/rhdh/backstage-community-plugin-catalog-backend-module-pingidentity@sha256:be529386d3f1af58c4d6f152f5251e9fd3dfe2b704643e6ccc67c66c4aa73775`
-
-`PING_IDENTITY_API_BASE_URL`
-
-`PING_IDENTITY_AUTH_BASE_URL`
-
-`PING_IDENTITY_CLIENT_ID`
-
-`PING_IDENTITY_CLIENT_SECRET`
-
-`PING_IDENTITY_ENV_ID`
-
-
-|2.1.0--0.15.0
 |Scaffolder Relation Processor |`https://npmjs.com/package/@backstage-community/plugin-catalog-backend-module-scaffolder-relation-processor/v/2.17.1[@backstage-community/plugin-catalog-backend-module-scaffolder-relation-processor]` |2.17.1 
-|`oci://quay.io/rhdh/backstage-community-plugin-catalog-backend-module-scaffolder-relation-processor@sha256:7799c58e3d183622a46c0f2d782479c7b4b80c6f30410922c9a9e3850b748b6b`
+|`oci://quay.io/rhdh/backstage-community-plugin-catalog-backend-module-scaffolder-relation-processor@sha256:a50690db69b87df4e3876195c2ecadf855dbc3119f78fb78409b8306b368caf4`
 
 
 |2.1.0--2.17.1
-|Scorecard Backend Module Dependabot |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-dependabot/v/1.1.3[@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-dependabot]` |1.1.3 
-|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-dependabot@sha256:6118371fef30bce61e420ea9201ec183626c3cc28530dff5b9f92c9cb8320c2c`
+|Scorecard Backend Module Dependabot |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-dependabot/v/1.1.7[@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-dependabot]` |1.1.7 
+|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-dependabot@sha256:422a80b49da32376212731229804dc85a6bfef50b0a11e52e5060e67979558d9`
 
 
-|2.1.0--1.1.3
-|Scorecard Backend Module Dora |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-dora/v/0.2.1[@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-dora]` |0.2.1 
-|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-dora@sha256:6cdcc182c5fe84a00fece749a1598b30dc84139021b1eb5241c845f8b3a3ff2f`
+|2.1.0--1.1.7
+|Scorecard Backend Module Dora |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-dora/v/0.2.6[@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-dora]` |0.2.6 
+|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-dora@sha256:448348f984eb15e9b6b2aff10448a4f596118b4fc857efe020c5db80707d804e`
 
 
-|2.1.0--0.2.1
-|Scorecard Backend Module Filecheck |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-filecheck/v/1.1.3[@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-filecheck]` |1.1.3 
-|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-filecheck@sha256:e6f98370bed3d2ae2149471142f75293788a583b199f6ca8fb899174c09e70ca`
+|2.1.0--0.2.6
+|Scorecard Backend Module Filecheck |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-filecheck/v/1.1.7[@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-filecheck]` |1.1.7 
+|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-filecheck@sha256:fa83e4afadd1799bc1ac3c3431c8896f08193a2684ac1ddd44ced8e5a171beb3`
 
 
-|2.1.0--1.1.3
-|Scorecard Backend Module GitHub |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-github/v/4.4.1[@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-github]` |4.4.1 
-|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-github@sha256:aa4522d6d7fbef638a16bdf7fef5b2d0b8618b1f47794adf28c101096cef22e3`
+|2.1.0--1.1.7
+|Scorecard Backend Module GitHub |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-github/v/4.5.2[@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-github]` |4.5.2 
+|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-github@sha256:11486aad2908c9127c7b7bbd2121d7105058b5df7db955639729eb744460ec0e`
 
 
-|2.1.0--4.4.1
-|Scorecard Backend Module Jira |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-jira/v/4.4.1[@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-jira]` |4.4.1 
-|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-jira@sha256:1ac6a476899201e7e397ba3481357f0e14babbbff3c7f893f434d122bb45bd35`
+|2.1.0--4.5.2
+|Scorecard Backend Module Jira |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-jira/v/4.5.2[@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-jira]` |4.5.2 
+|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-jira@sha256:5aea2e4b7f04f70eb56f9491ea2dd79b8bfbdac751c0b39b41e8a4e656152347`
 
 `JIRA_TOKEN`
 
 `JIRA_URL`
 
 
-|2.1.0--4.4.1
-|Scorecard Backend Module Openssf |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-openssf/v/1.1.3[@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-openssf]` |1.1.3 
-|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-openssf@sha256:69759ec95badd27be5656331337987a191f30976a28e6937f1e4a6a2d7907693`
+|2.1.0--4.5.2
+|Scorecard Backend Module Openssf |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-openssf/v/2.0.4[@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-openssf]` |2.0.4 
+|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-openssf@sha256:de765b8aea531a3add7c76d7ac13f77b628ac38e6e7e5ffd8a0fc1db523fa660`
 
 
-|2.1.0--1.1.3
-|Scorecard Backend Module SonarQube |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-sonarqube/v/4.4.1[@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-sonarqube]` |4.4.1 
-|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-sonarqube@sha256:626b16b04f07251fdabf0620a7c4c8984b86e2ca91ce5bfd248195a893cd0937`
+|2.1.0--2.0.4
+|Scorecard Backend Module SonarQube |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-sonarqube/v/4.5.2[@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-sonarqube]` |4.5.2 
+|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-sonarqube@sha256:366b5dd2586815542c8de1862b07178c6c90c2028a37800f68beacc04ed94f1e`
 
 `SONARQUBE_API_KEY`
 
 
-|2.1.0--4.4.1
-|Scorecard |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard/v/4.4.1[@red-hat-developer-hub/backstage-plugin-scorecard]` |4.4.1 
-|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard@sha256:5c80a98e9e1b936692f3377f67f0e21ced5950a3d56e4a1bb51ca2d20c52adc3`
+|2.1.0--4.5.2
+|Scorecard |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard/v/4.5.2[@red-hat-developer-hub/backstage-plugin-scorecard]` |4.5.2 
+|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard@sha256:1b1647fb460700ee240f150087dd3f41055dfeae32deb94d37a4bf5468147595`
 
 
-|2.1.0--4.4.1
-|Scorecard |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard-backend/v/4.4.1[@red-hat-developer-hub/backstage-plugin-scorecard-backend]` |4.4.1 
-|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard-backend@sha256:61d47d7336502b26620e0e64f3d8dc76da5305da6de801863eb98c1c66f5c6f0`
+|2.1.0--4.5.2
+|Scorecard |`https://npmjs.com/package/@red-hat-developer-hub/backstage-plugin-scorecard-backend/v/4.5.2[@red-hat-developer-hub/backstage-plugin-scorecard-backend]` |4.5.2 
+|`oci://quay.io/rhdh/red-hat-developer-hub-backstage-plugin-scorecard-backend@sha256:03c006e4f126abf5fdfb256c9df84ddd4c52d17ea5da31e0e100d2bb04c9dd39`
 
 
-|2.1.0--4.4.1
+|2.1.0--4.5.2
 |===
