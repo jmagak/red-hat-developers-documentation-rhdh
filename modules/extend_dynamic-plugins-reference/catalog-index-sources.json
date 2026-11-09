@@ -4,13 +4,13 @@
   "sources": {
     "supported": {
       "image": "quay.io/rhdh/plugin-catalog-index:next",
-      "digest": "sha256:c5e1243ea9430ca001685d515bad1a44b53276f25ad9a9012afd92882c40920f",
+      "digest": "sha256:88d0cd9a817aaa111b4e5cc0d991a84ffdfeda1d8f7e04e85d8b83e42f2ca688",
       "rhdhVersion": "2.2.0",
       "backstageVersion": "1.54.9"
     },
     "community": {
       "image": "ghcr.io/redhat-developer/rhdh-plugin-export-overlays/plugin-catalog-index:next",
-      "digest": "sha256:11726171904ec4cc6eaeae3858093097a8b514865f765fe1a478652a5971d51a",
+      "digest": "sha256:ab4d1893926e67b5c117c8ee6f6a9f4ce651e7a4f9f3274a09b75d8fd12619ab",
       "rhdhVersion": "2.2",
       "backstageVersion": "1.54.9"
     }
