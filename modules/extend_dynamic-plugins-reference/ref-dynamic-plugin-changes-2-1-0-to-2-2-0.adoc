@@ -7,7 +7,7 @@
 = Dynamic plugin changes between 2.1.0 and 2.2.0
 
 [role="_abstract"]
-The following table lists 8 dynamic plugins with changes between `registry.access.redhat.com/rhdh/plugin-catalog-index:2.1.0` and `2.2.0`.
+The following table lists 70 dynamic plugins with changes between `registry.access.redhat.com/rhdh/plugin-catalog-index:2.1.0` and `2.2.0`.
 
 Delivery method may be one of "Embed" for an embedded wrapper, "OCI" for an OCI artifact, or "n/a" if that plugin is not available in that release.
 
@@ -15,12 +15,74 @@ Delivery method may be one of "Embed" for an embedded wrapper, "OCI" for an OCI 
 |===
 | 3+|*2.1.0* 3+|*2.2.0*
 |*Plugin package* |*Version* |*Support* |*Method* |*Version* |*Support* |*Method*
-|`@red-hat-developer-hub/backstage-plugin-app-auth` |1.2.0 |Production |OCI |1.3.0 |Production |OCI
-|`@red-hat-developer-hub/backstage-plugin-app-defaults` |1.12.2 |Production |OCI |1.13.0 |Production |OCI
+|`@backstage-community/plugin-3scale-backend` |n/a |n/a |n/a |3.17.0 |Community |OCI
+|`@backstage-community/plugin-acr` |n/a |n/a |n/a |1.28.1 |Community |OCI
+|`@backstage-community/plugin-analytics-provider-segment` |1.31.1 |Production |OCI |2.0.0 |Production |OCI
+|`@backstage-community/plugin-argocd` |n/a |n/a |n/a |3.1.3 |Community |OCI
+|`@backstage-community/plugin-argocd-backend` |n/a |n/a |n/a |1.7.2 |Community |OCI
+|`@backstage-community/plugin-azure-devops` |n/a |n/a |n/a |0.34.0 |Community |OCI
+|`@backstage-community/plugin-azure-devops-backend` |n/a |n/a |n/a |0.32.0 |Community |OCI
+|`@backstage-community/plugin-catalog-backend-module-pingidentity` |0.15.0 |Tech Preview |OCI |n/a |n/a |n/a
+|`@backstage-community/plugin-dynatrace` |n/a |n/a |n/a |10.23.0 |Community |OCI
+|`@backstage-community/plugin-github-actions` |n/a |n/a |n/a |1.4.0 |Community |OCI
+|`@backstage-community/plugin-github-issues` |n/a |n/a |n/a |1.4.0 |Community |OCI
+|`@backstage-community/plugin-jenkins` |n/a |n/a |n/a |0.34.0 |Community |OCI
+|`@backstage-community/plugin-jenkins-backend` |n/a |n/a |n/a |0.31.0 |Community |OCI
+|`@backstage-community/plugin-jfrog-artifactory` |n/a |n/a |n/a |2.0.3 |Community |OCI
+|`@backstage-community/plugin-lighthouse` |n/a |n/a |n/a |0.26.0 |Community |OCI
+|`@backstage-community/plugin-nexus-repository-manager` |n/a |n/a |n/a |1.27.4 |Community |OCI
+|`@backstage-community/plugin-quay` |n/a |n/a |n/a |1.38.3 |Community |OCI
+|`@backstage-community/plugin-quay-backend` |n/a |n/a |n/a |1.18.1 |Community |OCI
+|`@backstage-community/plugin-rbac` |2.3.1 |Production |OCI |2.3.6 |Production |OCI
+|`@backstage-community/plugin-scaffolder-backend-module-quay` |n/a |n/a |n/a |2.22.1 |Community |OCI
+|`@backstage-community/plugin-scaffolder-backend-module-servicenow` |n/a |n/a |n/a |2.17.0 |Community |OCI
+|`@backstage-community/plugin-scaffolder-backend-module-sonarqube` |n/a |n/a |n/a |2.17.0 |Community |OCI
+|`@backstage-community/plugin-sonarqube` |n/a |n/a |n/a |1.3.0 |Community |OCI
+|`@backstage-community/plugin-sonarqube-backend` |n/a |n/a |n/a |1.3.0 |Community |OCI
+|`@backstage-community/plugin-tekton` |n/a |n/a |n/a |4.0.5 |Community |OCI
+|`@backstage-community/plugin-topology` |3.0.1 |Production |OCI |3.0.7 |Production |OCI
+|`@backstage/plugin-catalog-backend-module-bitbucket-cloud` |n/a |n/a |n/a |0.5.14 |Community |OCI
+|`@backstage/plugin-catalog-backend-module-bitbucket-server` |n/a |n/a |n/a |0.5.14 |Community |OCI
+|`@backstage/plugin-scaffolder-backend-module-azure` |n/a |n/a |n/a |0.2.25 |Community |OCI
+|`@backstage/plugin-scaffolder-backend-module-bitbucket-cloud` |n/a |n/a |n/a |0.3.10 |Community |OCI
+|`@backstage/plugin-scaffolder-backend-module-bitbucket-server` |n/a |n/a |n/a |0.2.25 |Community |OCI
+|`@backstage/plugin-scaffolder-backend-module-gerrit` |n/a |n/a |n/a |0.2.24 |Community |OCI
+|`@pagerduty/backstage-plugin` |n/a |n/a |n/a |0.21.0 |Community |OCI
+|`@pagerduty/backstage-plugin-backend` |n/a |n/a |n/a |0.14.0 |Community |OCI
+|`@red-hat-developer-hub/backstage-plugin-adoption-insights` |1.0.2 |Production |OCI |1.0.4 |Production |OCI
+|`@red-hat-developer-hub/backstage-plugin-adoption-insights-backend` |1.0.2 |Production |OCI |1.0.4 |Production |OCI
+|`@red-hat-developer-hub/backstage-plugin-analytics-module-adoption-insights` |1.0.2 |Production |OCI |1.0.4 |Production |OCI
+|`@red-hat-developer-hub/backstage-plugin-app-auth` |1.1.1 |Production |OCI |1.3.0 |Production |OCI
+|`@red-hat-developer-hub/backstage-plugin-app-defaults` |1.5.0 |Production |OCI |1.13.0 |Production |OCI
 |`@red-hat-developer-hub/backstage-plugin-app-integrations` |1.1.1 |Production |OCI |1.2.0 |Production |OCI
-|`@red-hat-developer-hub/backstage-plugin-orchestrator` |6.2.4 |Production |OCI |6.2.5 |Production |OCI
-|`@red-hat-developer-hub/backstage-plugin-orchestrator-backend` |8.13.2 |Production |OCI |8.13.3 |Production |OCI
+|`@red-hat-developer-hub/backstage-plugin-catalog-backend-module-extensions` |0.20.0 |Tech Preview |OCI |1.0.2 |Tech Preview |OCI
+|`@red-hat-developer-hub/backstage-plugin-extensions` |0.20.0 |Tech Preview |OCI |1.0.2 |Tech Preview |OCI
+|`@red-hat-developer-hub/backstage-plugin-extensions-backend` |0.20.0 |Tech Preview |OCI |1.0.2 |Tech Preview |OCI
+|`@red-hat-developer-hub/backstage-plugin-global-header` |3.1.0 |Production |OCI |3.2.1 |Production |OCI
+|`@red-hat-developer-hub/backstage-plugin-homepage` |1.18.0 |Production |OCI |3.1.0 |Production |OCI
+|`@red-hat-developer-hub/backstage-plugin-homepage-backend` |0.5.0 |Production |OCI |0.6.0 |Production |OCI
+|`@red-hat-developer-hub/backstage-plugin-intelligent-assistant` |5.3.1 |Production |OCI |5.3.10 |Production |OCI
+|`@red-hat-developer-hub/backstage-plugin-intelligent-assistant-backend` |5.3.1 |Production |OCI |5.3.10 |Production |OCI
+|`@red-hat-developer-hub/backstage-plugin-orchestrator` |6.2.1 |Production |OCI |6.2.5 |Production |OCI
+|`@red-hat-developer-hub/backstage-plugin-orchestrator-backend` |8.13.1 |Production |OCI |8.13.3 |Production |OCI
 |`@red-hat-developer-hub/backstage-plugin-orchestrator-backend-module-loki` |1.5.1 |Production |OCI |1.5.2 |Production |OCI
-|`@red-hat-developer-hub/backstage-plugin-orchestrator-form-widgets` |2.2.1 |Production |OCI |2.2.2 |Production |OCI
+|`@red-hat-developer-hub/backstage-plugin-orchestrator-form-widgets` |2.2.0 |Production |OCI |2.2.2 |Production |OCI
 |`@red-hat-developer-hub/backstage-plugin-scaffolder-backend-module-orchestrator` |1.8.1 |Production |OCI |1.8.2 |Production |OCI
+|`@red-hat-developer-hub/backstage-plugin-scorecard` |4.4.1 |Tech Preview |OCI |4.5.2 |Tech Preview |OCI
+|`@red-hat-developer-hub/backstage-plugin-scorecard-backend` |4.4.1 |Tech Preview |OCI |4.5.2 |Tech Preview |OCI
+|`@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-dependabot` |1.1.3 |Tech Preview |OCI |1.1.7 |Tech Preview |OCI
+|`@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-dora` |0.2.1 |Tech Preview |OCI |0.2.6 |Tech Preview |OCI
+|`@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-filecheck` |1.1.3 |Tech Preview |OCI |1.1.7 |Tech Preview |OCI
+|`@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-github` |4.4.1 |Tech Preview |OCI |4.5.2 |Tech Preview |OCI
+|`@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-jira` |4.4.1 |Tech Preview |OCI |4.5.2 |Tech Preview |OCI
+|`@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-openssf` |1.1.3 |Tech Preview |OCI |2.0.4 |Tech Preview |OCI
+|`@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-sonarqube` |4.4.1 |Tech Preview |OCI |4.5.2 |Tech Preview |OCI
+|`@roadiehq/backstage-plugin-argo-cd-backend` |n/a |n/a |n/a |4.9.0 |Community |OCI
+|`@roadiehq/backstage-plugin-datadog` |n/a |n/a |n/a |2.8.0 |Community |OCI
+|`@roadiehq/backstage-plugin-github-insights` |n/a |n/a |n/a |3.6.0 |Community |OCI
+|`@roadiehq/backstage-plugin-github-pull-requests` |n/a |n/a |n/a |3.9.0 |Community |OCI
+|`@roadiehq/scaffolder-backend-argocd` |n/a |n/a |n/a |1.9.0 |Community |OCI
+|`@roadiehq/scaffolder-backend-module-http-request` |5.8.0 |Production |OCI |5.9.0 |Production |OCI
+|`@roadiehq/scaffolder-backend-module-utils` |n/a |n/a |n/a |4.2.1 |Community |OCI
+|`apic-backstage` |n/a |n/a |n/a |1.0.4 |Community |OCI
 |===
