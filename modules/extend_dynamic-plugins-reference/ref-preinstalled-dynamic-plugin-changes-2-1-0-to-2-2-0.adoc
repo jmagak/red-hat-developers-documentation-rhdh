@@ -7,7 +7,7 @@
 = Preinstalled dynamic plugin changes between 2.1.0 and 2.2.0
 
 [role="_abstract"]
-{product} 2.1.0 enables 19 dynamic plugins by default; {product} 2.2.0 enables 19. The following table lists the plugins that are enabled by default in one release but not the other. There are 0 changes in this release: 0 removed, 0 added, 0 promoted.
+{product} 2.1.0 enables 18 dynamic plugins by default; {product} 2.2.0 enables 19. The following table lists the plugins that are enabled by default in one release but not the other. There is 1 change in this release: 0 removed, 0 added, 1 promoted.
 
 "n/a" indicates that the plugin is not shipped in that release at all.
 
@@ -15,5 +15,5 @@
 |===
 | 2+|*2.1.0* 2+|*2.2.0* |
 |*Plugin package* |*Default* |*Version* |*Default* |*Version* |*Change*
-6+|No change to the plugins that are enabled by default was found.
+|`@backstage/plugin-org` |Disabled |0.7.8 |Enabled |0.7.8 |Promoted to enabled
 |===
